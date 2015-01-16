@@ -1,0 +1,680 @@
+/* Nice menus aren't used anymore, I don't think. They've been replaced by superfish. */
+	ul.nice-menu {
+		position: relative;
+		z-index: 999;
+	}
+	ul.nice-menu-down ul li { padding-right:0 !important;}
+	.block-nice_menus {z-index:999;}
+	#sidebar-right ul.nice-menu li a {
+		color: $white;
+		line-height: 24px;
+		text-decoration: none;
+		font-size:18px;
+		font-variant:small-caps;
+		font-weight: 100;
+		margin: 0 0 0 28px;
+	}
+	#sidebar-right ul.nice-menu li {
+		width:166px;
+		border-right: none !important;
+		border-left: none !important;
+	}
+	#sidebar-right ul.nice-menu li {
+		background: #2C6397;
+		border: 2px solid #275787;
+		border-top: none;
+	}
+	#sidebar-right ul.nice-menu li a {
+		font-size:14px;
+		line-height: 16px;
+		padding: 6px;
+		padding-left: 12px;
+	}
+	#sidebar-right ul.nice-menu li a:hover {
+		color: #f7ec41;
+	}
+	#sidebar-right ul.nice-menu li a.active {
+		color: #f7ec41;
+		font-weight: bold;
+	}
+/* /nice-menu */
+
+/* Selectors that don't apply to anything that actually exists */
+	/* .block-inner does not exist on any of these pages. */
+	body.page-node-15 .block-inner .views-field-field-teaserimage-fid,
+	body.page-node-53 .block-inner .views-field-field-teaserimage-fid,
+	body.page-node-44 .block-inner .views-field-field-teaserimage-fid,
+	body.page-node-46 .block-inner .views-field-field-teaserimage-fid,
+	body.page-node-52 .block-inner .views-field-field-teaserimage-fid,
+	body.page-node-51 .block-inner .views-field-field-teaserimage-fid,
+	body.page-node-2099 .block-inner .views-field-field-teaserimage-fid  	{
+	float: left;
+	padding-right: 5px;
+	}
+	body.page-node-53 .block-inner h3,
+	body.page-node-51 .block-inner h3,
+	body.page-node-8 .block-inner h3,
+	body.page-node-15 .block-inner h3,
+	body.page-node-44 .block-inner h3,
+	body.page-node-53 .block-inner h2,
+	body.page-node-53 .block-inner .view-game-list-view .views-field-title {
+	color: rgb(247, 236, 65);
+	font-weight: lighter;
+	margin-bottom: 3px;
+	}
+	body.page-node-53 .block-inner .view-game-list-view .views-field-title {
+	
+	font-size: 16px;
+	margin-top: 10px;
+	}
+	
+	/* Node 86 is an old home page, this is no longer relevant */
+		body.front #content #node-86 h2.angelina, body.front #content #node-86 h1.angelina {text-indent: -9999px;}
+		*
+
+	/* /node 86 */
+	body.front #content .panel-col-top .rteright img { border: solid 1px $white; } /* There is no image in this location */
+	#mission /* The mission statement of the site (displayed on homepage) */
+	  {	position: relative;
+		left: 240px;
+		width: 480px;
+	  }
+	body.front #sidebar-right .view-header p {font-weight:bold;font-size:11px }
+	body.front #sidebar-right ul.menu {padding:0; margin:0; }
+	body.front #sidebar-right ul.menu li {font-size:23px !important; height:23px !important;list-style: none outside none;padding:0;color: #f7ec41!important; margin:0; }
+	body#edit-body {color: #000;}
+	body.front #content .panel-col-top embed,
+	body.front #content .panel-col-top object  {display: block;}
+	body.front #content .panel-col-top .morelink {
+		display:block;
+		position:relative;
+		left:698px;
+		font-size:15px;
+		height: 15px;
+	}
+	#top-bar .form-text { /* I think this was for the search box, which is not currently available */
+		border:none;
+		font-size:12px; 
+		height:14px; 
+		margin-top:4px; 
+		padding-top:1px; 
+	}
+	#header_anim {margin-left:14px;height:125px;width:960px;overflow:hidden;float:none;clear:both;}
+	body.page-node-50 #node-42 h2 a {
+		/* eliminate extraneous "News" title on Newsletter page (this Newsletter page is deprecated) */
+		display:none;
+	}
+
+/* Deprecated blocks/views. Deleted from dev. TODO: delete blocks/views from production. */
+	#node-2568 {
+		/* 'test front' page */
+		background: url("http://joidesresolution.org/sites/all/themes/joides_blue/images/home-overlay.png") repeat-x scroll 0 0 transparent;
+		height: 231px;
+		left: -19px;
+		padding: 15px;
+		position: absolute;
+		top: -301px;
+		width: 308px;
+	} 
+	
+	#sidebar-right .block-inner .view-parent-teaser-view .views-field-field-teaserimage-fid {
+	padding-right: 3px;
+	padding-bottom: 3px;
+	}
+
+	#sidebar-right .block-inner .view-parent-teaser-view h3 a {
+	color: #f7ec41;
+	font-size: 15px;
+	font-family:Arial, Helvetica, sans-serif;
+	text-transform:uppercase;
+	font-weight:lighter;
+	}
+	body.front #content #block-views-test_slideshow_view-block_1 {float:left;margin-right:45px;margin-left:15px;} /* slideshow from old home page */
+	body.front #content .block-block-19 h2.angelina { font-size: 45px; height:45px; padding:0px;margin:5px 0px 0px 4px !important;} /* old home page content */
+	#block-block-2 { /* old link to glossary (without IODP link) */
+	  float: right;
+	}
+	#top-bar #block-block-2 {font-size:13px;margin:3px 20px 0px 35px; text-transform:lowercase}
+	body.front #sidebar-right .view-current-ship-location a { font-variant: small-caps; color: $white;font-size:12px;margin-bottom:10px;display:block;}
+	body.front #sidebar-right .view-teaser-ship-location-block .view-content { padding: 5px; }
+	#sidebar-right #block-block-9, #sidebar-right #block-block-9 ul {
+		/* Secondary links menu block */
+		padding: 0;
+		margin: 0 0 0 0;
+	}
+	#secondary a /* Secondary links */ {
+		font-size:11px;
+	}
+
+/* Stuff that was already commented out. */
+	body.page-node-4 .view-meetjr-page-teaser-list-view .views-field-title {
+		/*line-height: 0;*/
+	}
+	/*
+	body.front h2 .angelina, $white { margin-right:-.70em;margin-left:-.70em;padding:0px}
+
+	body.front h2 .arial {margin-right:.9em;margin-left:.5em;padding:0px}
+
+	.white {color:white;}
+
+	*/
+	#navbar { /*height:500px;*/ }
+	.preview .node /* Preview of the content before submitting new or updated content */
+	{
+	/* background-color: #ffffea; */ /* Drupal core uses a #ffffea background */
+	}
+	.comment-unpublished /* Unpublished comments */
+	{
+	/* background-color: #fff4f4; */ /* Drupal core uses a #fff4f4 background */
+	}
+	.indented /* Nested comments are indented */
+	{
+	/* margin-left: 25px; */ /* Drupal core uses a 25px left margin */
+	}
+
+	.preview .comment /* Preview of the comment before submitting new or updated comment */
+	{
+	/* background-color: #ffffea; */ /* Drupal core uses a #ffffea background */
+	}
+
+	/*.block-inner h3, .block-inner h2, #content-inner h3 {
+	color: rgb(247, 236, 65);
+	font-weight: lighter;
+	margin-bottom: 3px;
+	}*/
+	.error /* Errors that are separate from div.messages status messages (see above.) */
+	{
+	/* color: #e55; */ /* Drupal core uses a #e55 background */
+	}
+
+	.warning /* Warnings that are separate from div.messages status messages (see above.) */
+	{
+	/* color: #e09010; */ /* Drupal core uses a #e09010 background */
+	}
+
+	tr.even
+	{
+	/* background-color: #eee; */ /* Drupal core uses a #eee background */
+	}
+
+	tr.odd
+	{
+	/* background-color: #eee; */ /* Drupal core uses a #eee background */
+	}
+	/*#content-bottom, #content-bottom a, #cotent-bottom p, #content-bottom label, #content-bottom span {
+	font-size: 1.14em;
+	}*/
+	#comments h2#comments-title,
+	#content h1.title,
+	#content h2.title,
+	#content h2.pane-title span {
+		/*margin-right: -11px;*/ 
+	}
+
+/* Empty selectors */
+	div.messages /* Important messages (status, warning, and error) for the user */
+	{
+	}
+
+	div.status /* Normal priority messages */
+	{
+	}
+
+	div.warning, tr.warning /* Medium priority messages */
+	{
+	/* border: 1px solid #f0c020; */ /* Drupal core uses: 1px solid #f0c020 */
+	}
+
+	div.error, tr.error /* High priority messages. See also the .error declaration below. */
+	{
+	}
+
+	div.tabs /* See also the tabs.css file. */
+	{
+	}
+	#content-area /* Wrapper for the actual page content */
+	{
+	}
+		#navbar-inner
+	{
+	}
+
+	#search-box /* Wrapper for the search form */
+	{
+	}
+	#primary ul ul {
+	}
+	/** sidebar-left **/
+		#sidebar-left
+		{
+		}
+
+		#sidebar-left-inner
+		{
+		}
+	#sidebar-right-inner
+	{
+	}
+	#footer-message /* Wrapper for the footer message from Drupal's "Site information"
+					 and for any blocks placed in the footer region */
+	{
+	}
+
+	/** closure **/
+		#closure-blocks /* Wrapper for any blocks placed in the closure region */
+		{
+		}
+
+	/** Drupal nodes **/
+		.node /* Node wrapper */
+		{
+		}
+
+		.node-inner /* Additional wrapper for node */
+		{
+		}
+	.sticky /* A sticky node (displayed before others in a list) */
+	{
+	}
+	.node-mine /* A node created by the current user */
+	{
+	}
+
+	.node-teaser /* A node displayed as teaser */
+	{
+	}
+
+	/* All nodes are given a node-type-FOO class that describes the type of
+	 * content that it is. If you create a new content type called
+	 * "my-custom-type", it will receive a "node-type-my-custom-type" class.
+	 */
+	.node-type-page /* Page content node */
+	{
+	}
+
+	.node-type-story /* Story content node */
+	{
+	}
+
+	.node h2.title /* Node title */
+	{
+	}
+	.node .picture /* The picture of the node author */
+	{
+	}
+	.node .meta /* Wrapper for submitted and terms data */
+	{
+	}
+
+	.node .terms /* Node terms (taxonomy) */
+	{
+	}
+
+	.node .content /* Node's content wrapper */
+	{
+	}	#comments-title /* Heading for the list of comments */
+	{
+	}
+
+	.comment /* Wrapper for a single comment */
+	{
+	}
+
+	.comment-inner /* Additional wrapper for a single comment */
+	{
+	}
+
+	.comment-preview /* Preview of the comment before submitting new or updated comment */
+	{
+	}
+
+	.comment.new /* A new comment since the user last viewed the page. */
+	{
+	}
+
+	.comment.odd /* An odd-numbered comment in the list of comments */
+	{
+	}
+
+	.comment.even /* An even-numbered comment in the list of comments */
+	{
+	}
+
+	.comment.first /* The first comment in the list of comments */
+	{
+	}
+
+	.comment.last /* The last comment in the list of comments */
+	{
+	}
+	.comment-unpublished div.unpublished /* The word "Unpublished" displayed beneath the content. See also the div.unpublished declaration in the node section above. */
+	{
+	}
+
+	.comment-published /* Published comments */
+	{
+	}
+
+	.comment-by-anon /* A comment created by an anonymous user */
+	{
+	}
+
+	.comment-by-author /* A comment created by the node's author */
+	{
+	}
+
+	.comment-mine /* A comment created by the current user */
+	{
+	}
+
+	.comment h3.title /* Comment title */
+	{
+	}
+	.comment .picture /* The picture of the comment author */
+	{
+	}
+
+	.comment .submitted /* The "posted by" information */
+	{
+	}
+
+	.comment .content /* Comment's content wrapper */
+	{
+	}
+
+	.comment .user-signature /* The user's signature */
+	{
+	}
+
+	.block.region-odd /* Zebra striping for each block in the region */
+	{
+	}
+
+	.block.region-even /* Zebra striping for each block in the region */
+	{
+	}
+
+	.block.odd /* Zebra striping independent of each region */
+	{
+	}
+
+	.block.even /* Zebra striping independent of each region */
+	{
+	}
+
+	.region-count-1 /* Incremental count for each block in the region */
+	{
+	}
+
+	.count-1 /* Incremental count independent of each region */
+	{
+	}
+
+	.block-inner /* Additional wrapper for block */
+	{
+	}
+		.block .content /* Block's content wrapper */
+	{
+	}
+	#block-aggregator-category-1 /* Block for the latest news items in the first category */
+	{
+	}
+
+	#block-aggregator-feed-1 /* Block for the latest news items in the first feed */
+	{
+	}
+
+	#block-block-1 /* First administrator-defined block */
+	{
+	}
+
+	#block-blog-0 /* "Recent blog posts" block */
+	{
+	}
+
+	#block-book-0 /* "Book navigation" block for the current book's table of contents */
+	{
+	}
+
+	#block-comments-0 /* "Recent comments" block */
+	{
+	}
+
+	#block-forum-0 /* "Active forum topics" block */
+	{
+	}
+
+	#block-forum-1 /* "New forum topics" block */
+	{
+	}
+
+	#block-menu-2 /* "Primary links" block */
+	{
+	}
+
+	#block-node-0 /* "Syndicate" block for primary RSS feed */
+	{
+	}
+
+	#block-poll-0 /* "Most recent poll" block */
+	{
+	}
+
+	#block-profile-0 /* "Author information" block for the profile of the page's author */
+	{
+	}
+	#block-statistics-0 /* "Popular content" block */
+	{
+	}
+
+	#block-user-0 /* "User login form" block */
+	{
+	}
+
+	#block-user-1 /* "Navigation" block for Drupal navigation menu */
+	{
+	}
+
+	#block-user-2 /* "Who's new" block for a list of the newest users */
+	{
+	}
+
+	#block-user-3 /* "Who's online" block for a list of the online users */
+	{
+	}
+
+	/** Drupal boxes **/
+	/* Wrapper for Comment form, Comment viewing options, Menu admin, and
+	 * Search results.
+	 */
+	.box /* Wrapper for box */
+	{
+	}
+
+	.box-inner /* Additional wrapper for box */
+	{
+	}
+
+	.box h2.title /* Box title */
+	{
+	}
+
+	.box .content /* Box's content wrapper */
+	{
+	}
+		.form-submit /* The submit button */
+	{
+	}
+
+/* May well exist, but I can't find it. */
+	.block-views-partner_list_view-block_1 {margin: -1em 1em;}
+
+	#block-blog_extra_blocks-2 {
+		width:355px;
+		height: 297px;
+		overflow: hidden;
+	}
+	
+	/* .block-inner does not exist in block.tpl.php */
+	.block-inner .views-field-field-teaserimage-fid {
+		padding-bottom: 10px;
+		padding-right: 10px;
+	}
+	.block-inner .views-table caption {
+	text-align: left;
+	}
+
+	.block-inner .views-table thead {
+	display: none;
+	}
+
+	#content .node-inner .node-inner h1,
+	#content .node-inner .node-inner h2 {
+		/* resets these values for the first use of the title on a page */
+		background: none;
+		height: inherit;
+		line-height: inherit;
+		font-size: inherit;
+	}
+
+	body.node-type-panel .panel-pane .panel-col-top .content { /* I don't think there's anywhere where panel-col-top is inside panel-pane--it's always vice-versa. */
+		padding-right: 0;
+	}
+	/* Stuff related to semi-deprecated search block. */
+		#block-search-0 /* "Search form" block */ {
+			float: right;
+			padding-top: 3px;
+			margin-bottom: 0;
+		}
+	
+		#block-search-0 label {
+			display: none;
+		}
+		#edit-search-theme-form-1-wrapper label /* Label that says "Search this site:" */
+		{
+		display: none;
+		}
+		#navbar .form-text {
+			text: "Search";
+		}
+		#navbar #edit-submit-1 {
+			color: $dark-blue;
+			width: 10px;
+		}
+		#navbar .form-submit {
+			background: transparent url('http://joidesresolution.org/sites/default/files/magnifying_glass.gif')
+					no-repeat left center;
+			border: 0;
+			text-indent: -9999px;
+		}
+	/* /search */
+
+/* Just not right. */
+	#block-admin-display-form {color:black;} /* This is for the block administration page, but obviously all that text should be white not black. */
+
+/* It exists, I just don't think it accomplishes anything. */
+	.sf-menu li:hover ul, 
+	.sf-menu li.sfHover ul {
+		top: 26px !important;
+	}
+	
+/* Relates to the admin section, which is themed with Garland, so why are we theming it here? Check to make sure removal doesn't break admin pages, esp. WRT admin/build/block. */
+/** OpenID **/
+	/* The default styling for the OpenID login link seems to assume Garland's
+	 * styling of list items.
+	 */
+	#user-login-form ul /* OpenID creates a new ul above the login form's links. */
+	{
+	margin-bottom: 0; /* Position OpenID's ul next to the rest of the links. */
+	}
+
+	#user-login-form li.openid-link, /* The "Log in using OpenID" links. */
+	#user-login li.openid-link
+	{
+	margin-top: 1em;
+	margin-left: -20px; /* Un-do some of the padding on the ul list. */
+	padding-left: 20px;
+	background-position: left center;
+	}
+
+	#user-login-form li.user-link, /* The "Cancel OpenID login" links. */
+	#user-login li.user-link
+	{
+	margin-top: 1em;
+	list-style-type: disc;
+	list-style-position: outside;
+	}
+
+	#user-login li.openid-link, /* The OpenID links on the /user form. */
+	#user-login li.user-link
+	{
+	margin-left: -2em; /* Un-do all of the padding on the ul list. */
+	}
+
+/** Drupal admin tables **/
+	/* We overrode these styles in html-elements.css, but restore them for the
+	 * admin section of the site.
+	 */
+	.section-admin tbody
+	{
+	border-top: 1px solid #ccc;
+	}
+
+	.section-admin th
+	{
+	text-align: left;
+	padding-right: 1em;
+	border-bottom: 3px solid #ccc;
+	}
+
+	.section-admin tbody th
+	{
+	border-bottom: 1px solid #ccc;
+	}
+
+	.section-admin thead th
+	{
+	text-align: left;
+	padding-right: 1em;
+	border-bottom: 3px solid #ccc;
+	}
+
+	.section-admin tr.even,
+	.section-admin tr.odd
+	{
+	background-color: #eee;
+	border-bottom: 1px solid #ccc;
+	padding: 0.1em 0.6em;
+	}
+
+	/*selectively cancel the above styles for the block building page even though it is in .section-admin because it is styled like the front end*/
+	
+	body.page-admin-build-block.section-admin table {
+		color: $white;
+	}
+
+	
+	body.page-admin-build-block.section-admin tbody {
+	border-top: none;
+	}
+
+	
+	body.page-admin-build-block.section-admin th {
+	border-bottom: none;
+	}
+
+	body.page-admin-build-block.section-admin tbody th {
+	border-bottom: none;
+	}
+
+	body.page-admin-build-block.section-admin thead th {
+	border-bottom: none;
+	}
+
+	body.page-admin-build-block.section-admin tr.even,
+	body.page-admin-build-block.section-admin tr.odd {
+	background-color: transparent;
+	border-bottom: none;
+	padding: 0.1em 0.6em;
+	}
+ 

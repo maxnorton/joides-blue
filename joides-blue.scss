@@ -1,0 +1,1111 @@
+/* Stylesheet information for joides-blue-3.0 zen sub-theme for Drupal 6
+Created for the Consortium for Ocean Leadership, oceanleadership.org
+File created date: 09.15.2008
+By: velocity7.com
+Release 3.0-alpha created date: 12.11.2014
+By: Max Norton maxbnorton@gmail.com
+*/
+
+/* TODO: 
+	- Eliminate !important
+	- Eliminate id-based selectors
+	- Replace clear property with better methods 
+*/
+
+/* Table of Contents
+COLOR PALETTE
+RESETS AND OVERRIDES
+LINKS AND TYPE
+DRUPAL ELEMENTS
+THEME REGIONS
+$logo
+$top-nav
+$nav-bar
+$etc
+SECONDARY LAYOUT
+$etc
+FORM ELEMENTS
+MISCELLANEOUS
+*/
+
+/* FONT AND COLOR PALETTE: 
+------------------------------ */
+	$sans-stack: Arial,Helvetica,sans-serif;
+	$black: #000;
+	$blue-grey: #e4eef2;
+	$blue-bg: #2c6397;
+	$blue-border: #275787;
+	$dark-blue: #1b3b5e;
+	$dark-yellow: #ded439;
+	$glossary-link: #a3ca2b;
+	$marker: #c00; /* Color for "new" markers */
+	$standard-blue: #00f;
+	$unpublished-bg: transparent; /* Drupal core uses a #fff4f4 background */
+	$unpublished-text: #d8d8d8;
+	$white: #fff;
+	$yellow: #f7ec41;
+
+
+/* RESETS AND OVERRIDES
+------------------------------ */
+
+/* For now, rely on html-elements.css, called in joides_blue.info.
+	TODO: Update to current Zen theme reset file (html-elements is deprecated and has been replaced by html-reset.css). */
+
+/* LINKS AND TYPE
+------------------------------ */
+
+	html {
+		border-bottom: 20px solid #193c60;
+		overflow: auto;
+	}
+	
+	body, caption, th, td, input, textarea, select, option, legend, fieldset {
+		font-family: $sans-stack;
+	}
+	
+	p {
+		margin-top: 0px;
+	}
+	
+	td, td div {
+		vertical-align: top
+	}
+	
+	a {
+		color: $yellow;
+		text-decoration: none;
+	
+		&:visited {
+			color: $dark-yellow;
+		}
+	}
+	
+	body {
+		background: url('/sites/all/themes/joides_blue/images/bg-water-faded.jpg') no-repeat center -300px $white;
+		margin: 10px 0 0;
+		overflow: hidden;
+		padding: 10px 0 0;
+		
+		&.node-type-media,
+		&.page-node-map {
+			background: $white;
+		}
+		
+	}
+	
+	.block ul,
+	.item-list ul {
+		margin: 1em 0;
+		padding: 0 0 0 1em;
+	}
+
+	x-h2#comments-title, /* TODO: eliminate this selector; I don't think it really exists anywhere. */
+	h1.title, /* The title of the page */
+	h2.title, /* Block title or the title of a piece of content when it is given in a list of content */
+	h3.title /* Comment title */ {
+		color: $yellow;
+		font-weight: 100;
+	 	font-size: 29px;
+		margin: 0;
+
+		body.front #sidebar-right & {
+			font-size: 20px;
+		}
+	}
+
+	x-#comments h2#comments-title, /* TODO: eliminate this selector; I don't think it really exists anywhere. */
+	#content h1.title, /* The title of the page */
+	#content h2.title, /* Block title or the title of a piece of content when it is given in a list of content */
+	x-#content h2.pane-title span {
+		/* TODO: eliminate this selector; I don't think it really exists anywhere. */
+		font-size: 29px;
+		height: 34px;
+		line-height: 29px;
+		padding-left: 12px;
+	}
+	
+	#content h2.title {
+		/* This rule was original found in the selector block directly above. It was then negated in a separate selector block for #content h1.title, as in the selector block directly below. Doing it this way seems drier. */
+		background: transparent url('/sites/all/themes/joides_blue/img/title-bar-fade.png') scroll no-repeat left top;
+	} 
+	
+	x-body.node-type-panel #content .panel-col-top h2.title { 
+		/* TODO: eliminate this selector; I don't think .panel-col-top h2.title really exists anywhere but the deprecated node/87. */
+		background: none;
+	}
+
+	h1.title {
+		padding-top: 3px;
+	}
+	
+	h2.title {
+		
+		.not-front {
+			margin-bottom: 10px;
+		}
+		
+	}
+	
+	.views-field-field-question-value .field-item strong {
+		/* FAQ questions */
+		/* OLD SELECTOR: body.page-node-49 & */
+		color: $yellow;
+	}
+	
+	.feed-icons {
+		/* The links to the RSS or Atom feeds for the current list of content */
+		margin: 1em 0;
+	}
+	
+	.help {
+		/* Help text on a page */
+		margin: 1em 0;
+	}
+
+	li a.active {
+		color: $black;
+	}
+
+	.marker {
+		/* "New" or "Updated" marker for content that is new or updated for the current user */
+		color: $marker;
+	}
+	
+	.more-help-link {
+		/* Link to more help */
+		font-size: 0.85em;
+		text-align: right;
+	}
+
+	.pager {
+		/* A list of page numbers when more than 1 page of content is available */
+		clear: both;
+		margin: 1em 0;
+		text-align: center;
+	}
+
+	.pager a, .pager strong.pager-current {
+		padding: 0.5em;
+	}
+
+	#primary a,
+	.view-view-dea-getinvolved-highlight a,
+	.highlight-block a {
+		color: $white;
+		font-size:18px;
+		font-variant:small-caps;
+		font-weight: 100;
+		line-height: 24px;
+		margin: 0 0 0 28px;
+		text-decoration: none;
+	}
+	
+	#primary a {
+		
+		:hover,
+		.active {
+			color: $yellow;
+		}
+		
+		.active {
+			font-weight: bold;
+		}
+	
+	}
+	
+	.view-view-dea-getinvolved-highlight a,
+	.highlight-block a {
+		text-transform:uppercase;
+		font-size:12px !important; /* TODO: Kill !important */
+		line-height:12px;
+	}
+
+
+/* DRUPAL ELEMENTS
+------------------------------ */
+
+		.content .views-field-title .field-content {
+			float: none;
+		}
+		
+		/* $front vs $not-front */
+		
+		.front {
+			
+			#content,
+			#sidebar-right {
+				border-top: 5px solid $blue-border; /* was #2d5482 but this seems approximately the same */
+				margin-top: 426px;
+				position: relative;
+			}
+			
+		}
+		
+		/* $node */
+		
+			.node {
+				
+				.links {
+					/*	OLD SELECTOR: .node div.links */
+					margin: 1em 0;
+				}
+				
+				.submitted {
+					/* TODO: Dry out. Same styles found in .view-recent-posts ul.links.inline */
+					font-size: 11px;
+					clear: left;
+				}
+			
+			}
+			
+			.node-inner {
+				
+				.content,
+				.meta,
+				.links {
+					/* OLD SELECTOR: .node-inner ul.links */
+					margin-left: 10px;
+				}
+				
+			}
+			
+			.node-unpublished {
+				background-color: $unpublished-bg; 
+			}
+	
+			.unpublished { 
+				/* TODO:	I question the utility of this entire set of styles, and the one that follows. 
+							An old comment in the old css suggests this is a div that displays the word 
+							"Unpublished" beneath the unpublished content.*/
+				/* OLD SELECTORS:	.node-unpublished div.unpublished,
+									.comment-unpublished div.unpublished */
+				color: $unpublished-text;
+				height: 0;
+				font-size: 75px;
+				font-weight: bold;
+				line-height: 1; /* TODO: one what? */
+				overflow: visible;
+				text-align: center;
+				text-transform: uppercase;
+				word-wrap: break-word;
+			}
+			
+			.node.node-unpublished .picture,
+			.comment.comment-unpublished .picture {
+				position: relative; /* Otherwise floated pictures will appear below the "Unpublished" text. */
+			}
+
+	/* $block */
+	
+		.block {
+			margin-bottom: 1em;
+			
+			h2.title {
+				/* Block titles get special styling... */
+				padding-left: 10px;
+				
+				#sidebar-right & {
+					/* ...except in #sidebar-right */
+					padding-left: 0;
+				}
+				
+			}
+			
+		}
+		
+	.more-link {
+		/* Aggregator, blog, and forum more link */
+		text-align: right;
+	}
+	
+	#user-login-form  {
+		/* Drupal's default login form */
+		text-align: left; 
+		/* TODO: why is it necessary to define this in our front-facing theme? */
+	}
+	
+	tr.even,
+	tr.odd {
+		background-color: transparent;
+		border-bottom: none;
+		padding: 0;
+	}
+		
+
+/* THEME REGIONS
+------------------------------ */
+			
+	/* $top_bar */
+	
+		#top-bar {
+			background-color: $dark-blue;
+			height: 25px;
+			margin: 0;
+			overflow: hidden;
+
+			p {
+				margin: 0;
+			}
+
+		}
+	
+	/* $header */
+	
+		#wrap-header {
+			background-color: transparent;
+			height: 174px;
+			overflow: hidden;
+			position: relative;
+		}
+		
+		#header {
+			background-color: $blue-grey;
+			bottom: 0;
+			height: 138px;
+			overflow: visible;
+			position: absolute;
+			width: 100%;
+		}
+		
+		#header-inner {
+			bottom: 0;
+			height: 100%;
+			position: absolute;
+			width: 100%;
+			z-index: 99;
+		}
+		
+		#logo-title {
+			/* Wrapper for logo, website name, and slogan
+			TODO: consider deletion */
+		}
+		
+		#logo {
+			/* Wrapper for logo */
+			margin: 35px 10px 0 14px;
+			padding: 0;
+		}
+		
+		#logo-image {
+			/* The actual logo image */
+			position: relative;
+			z-index: 99;
+		}
+		
+		h1#site-name,
+		div#site-name {
+			/* The name of the website 
+			TODO: consider removing div#site-name
+				(or DRY out text-indent into a separate class) */
+			text-indent: 100%;
+		}
+		
+		#site-slogan {
+			/* The slogan (or tagline) of a website
+			TODO: consider deletion */
+		}
+		
+		#header-blocks {
+			/* Wrapper for any blocks placed in the header region
+			TODO: consider deletion */
+		}
+	
+	/* $nav_bar */
+	
+		#navbar {
+			background: transparent url('/sites/all/themes/joides_blue/img/primary-bg.png') scroll repeat-x left top;
+			z-index: 999; /* TODO: apply this to #block-superfish-1 to make it work on educators page. */
+
+			li a {
+				padding: 0 10px;
+			}
+								
+		}
+	
+		#primary {
+			/* Primary links */
+			height: 28px;
+			margin-left: 0;
+			
+			
+			
+			li {
+				background: transparent url('/sites/all/themes/joides_blue/img/pipe.png') scroll no-repeat right top;
+				
+				&.first.sf-depth-1 {
+					margin-left: 0;
+				}
+				
+				&.last.sf-depth-1 {
+					background: none;
+				}
+				
+				li {
+					background: $blue-bg;
+					border: 2px solid $blue-border;
+					border-top: none;
+				
+					a {
+						font-size: 14px;
+						line-height: 16px;
+						padding: 6px 6px 6px 12px;
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+		.block-superfish {
+			/* OLD SELECTOR: div.block-superfish */
+			margin-bottom: 0;
+		}
+	
+	/* $left_aside */
+	
+	/* $right_aside */
+
+		#sidebar-right {
+			font-size: 10px;
+			line-height: 1.1em;
+			
+			.block {
+				background-color: $blue-bg; /* used to be #2c6293 */
+				border-bottom: 7px solid $blue-border; /* used to be #2a5584 */
+				padding: 10px 0 10px 10px;
+			}
+			
+			.views-field-field-teaserimage-fid {
+				padding: 0 10px 2px 0;					
+			}
+			
+			.block-inner .view-parent-teaser-view .views-field-field-teaserimage-fid {
+				padding-bottom: 3px;
+				padding-right: 3px;
+			}
+			
+		}		
+		
+		.not-front #sidebar-right {
+			/* OLD SELECTOR: .not-front #sidebar-right * */	
+			color: $white;
+			font-size: 11px;
+			list-style: none outside none;
+
+			a {
+				color: $yellow;
+			}
+
+			h2 {
+				font-size: 20px;
+			}
+
+			.views-field-field-teaserimage-fid {
+				float: left;
+				/* OLD way was: 
+					#sidebar-right .views-field-field-teaserimage-fid { float: left; }
+					.front #sidebar-right .views-field-field-teaserimage-fid { float: none; }
+				*/
+			}
+
+		}
+
+		.page-node-45 #sidebar-right a {
+			color: $white;
+		}
+
+		#sidebar-right .views-field-title a,
+		.not-front #sidebar-right h2.title {
+			font-weight: bold;
+		}
+	
+	/* $content_top */
+	
+		.region-content_bottom {
+			/* Old file referenced #content-top--I think this is equivalent.
+			TODO: eliminate underscores from region names.contentBottom?
+				hyphens not allowable in php so can't use those either. */
+			overflow: hidden;
+		}
+	
+	/* $content_bottom */
+	
+	/* $footer */
+	
+		#footer {
+			background: url ('sites/all/themes/joides_blue/images/bg-footerCentralColumn.png') scroll repeat-y center top transparent;
+			height: 274px;
+			position: relative;
+			
+			.block {
+				font-size: 12px;
+				height: 18px;
+				margin: 0 auto;
+				padding-top: 202px;
+				width: 940px;
+			}
+			
+		}
+		
+		#footer-inner {
+			background: url('sites/all/themes/joides_blue/images/bg-footer.png') scroll no-repeat center bottom transparent;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+	
+	/* $closure_region */
+
+
+/* SECONDARY LAYOUT
+------------------------------ */
+
+	#content-area {
+		
+		.views-field-field-teaserimage-fid {
+			/* TODO: Should this be classified as a Drupal element, a theme region, or what? 
+			Note it's defined in page.tpl.php, so it's really part of the theme. */
+			background-image: url('/sites/all/themes/joides_blue/img/picframe-220.png');
+			height: 185px;
+			width: 220px;
+			/* Another TODO: eliminate this image overlay nonsense, create rounded corners with CSS instead. */
+		
+			.page-node-2099 & {
+				background-image: none;
+				height: auto;
+				width: auto;
+			}
+		
+		}
+		
+		.field-field-teaserimage {
+			float: left;
+			padding: 0 20px 5px 0;
+		}
+		
+	}
+		
+	
+	/* generic/arbitrary page elements ------------------------------ */
+	
+		/* #main */
+		
+			#main {
+				background: url('/sites/all/themes/joides_blue/images/bg-repeat-right-matchedblues.gif')
+					scroll repeat-y center top $blue-grey;
+			}
+			
+			#main-inner {
+				margin: 0 14px;
+			
+				/* TODO: simplify these subselectors if they're staying in at all */
+				body.not-front.sidebar-right & {
+					background: transparent url('/sites/all/themes/joides_blue/images/bg-notfront-matchedblues.gif')
+						scroll no-repeat center 28px;
+				}
+				
+				body.front & {
+					/* In old file, this selector referenced div#main-inner. I've gotten rid of the div selector here. If this selectors doesn't apply, try that.*/
+						background: transparent url('/sites/all/themes/joides_blue/images/bg-front5.gif')
+							no-repeat scroll 19px 28px !important;
+				}
+				
+				body.two-sidebars & {
+					background: transparent url('/sites/all/themes/joides_blue/img/bg-main-two.png')
+						scroll no-repeat center 28px;
+				}
+				
+				body.no-sidebars & {
+					background: transparent url('/sites/all/themes/joides_blue/img/bg-main-right.png')
+						scroll no-repeat center 28px;
+				}
+			
+			}
+		
+		/* #content */
+		
+			#content-inner {
+				margin: 0 10px 0 8px;
+				position:relative;
+				
+				body.two-sidebars & {
+					margin: 0 10px 0 0;
+				}
+			}
+			
+			#content-header {
+				
+				.not-front & {
+					margin-bottom: 10px;
+				}
+			}
+			
+			#content-area,
+			body.node-type-panel .panel-pane .content {
+				/* sets a left margin for the content below the headers */
+				/* panels pages are treated differently, because they have multiple headers */
+				margin-left: 20px;
+			}
+			
+			body.two-sidebars #content-area,
+			body.node-type-panel #content-area,
+			body.node-type-panel .panel-pane .content .content {
+				/* removes the left margin where it would be doubled */
+				margin-left: 0;
+			}
+			
+			#breadcrumb {
+				/* The path to the current page in the form of a list of links */
+				left: 13px;
+				padding-bottom: 0; /* Undo system.css */
+				position: absolute;
+				top: -17px;
+				
+				.node-type-media & {
+					
+					color: $black;
+					position: static;
+					
+					a {
+						color: $standard-blue;
+					}
+				}
+				
+			}
+			
+			#content-bottom {
+				/* Wrapper for any blocks placed in the "content bottom" region */
+				margin: 1em;
+				
+				.page-node-54 & .block {
+					float: left;
+					margin-left: 20px;
+					width: 350px;
+				}
+				
+			}
+
+
+/* FORM ELEMENTS
+------------------------------ */
+
+	/* TODO: Assess this section. The old stylesheet labels these items "Drupal forms." What is their significance to our theme? */
+		.form-item, /* Wrapper for a form element (or group of form elements) and its label */
+		.form-checkboxes,
+		.form-radios {
+			margin: 1em 0;
+		}
+	
+		.form-item input.error, /* Highlight the form elements that caused a form submission error */
+		.form-item textarea.error,
+		.form-item select.error {
+			border: 2px solid #c00;
+		}
+	
+		.form-item label {
+			/* The label for a form element */
+			display: block;
+			font-weight: bold;
+		}
+	
+		.form-item label.option {
+			/* The label for a radio button or checkbox */
+			display: inline;
+			font-weight: normal;
+		}
+	
+		.form-required {
+			/* The part of the label that indicates a required field */
+			color: #c00;
+		}
+	
+		.form-item .description {
+			/* The descriptive help text (separate from the label) */
+			font-size: 0.85em;
+		}
+	
+		.form-checkboxes .form-item, /* Pack groups of checkboxes and radio buttons closer together */
+		.form-radios .form-item {
+			margin: 0.4em 0;
+		}
+	
+		.container-inline div, .container-inline label {
+			/* Inline labels and form divs */
+			display: inline;
+		}
+	
+		.tips {
+			/* Tips for Drupal's input formats */
+			margin: 0;
+			padding: 0;
+			font-size: 0.9em;
+		}
+
+
+/* MISCELLANEOUS
+------------------------------ */
+
+	/* $comments */
+	
+		#comments {
+			/* Wrapper for the list of comments and its title */
+			margin: 1em 0;
+		}
+		
+		.comment div.links {
+			/* TODO: Dry out with .node .links and ul.links */
+			margin: 1em 0;
+		}
+		
+		.new {
+			/* "New" marker for comments that are new for the current user */
+			color: $marker;
+		}
+		
+	/* /$comments */
+	
+	/* $glossary */
+	
+		a.glossary-term {
+			color: $glossary-link;
+		}
+		
+		.glossary-links {
+			display: none;
+		}
+	
+	/* /$glossary */
+	
+	/* particular $blocks */
+		
+		#block-block-40 {
+			position: relative;
+		}
+		
+		.block-poll {
+			/* OLD SELECTORS: div.block-poll ... */
+			
+			#edit-vote {
+				/* OLD SELECTOR: ... input#edit-vote */
+				color: $black;
+			}
+			
+			.poll .title {
+				/* OLD SELECTORS: ... div.poll div.title ... */
+			
+				embed {
+					display: none !important;
+					height: 0 !important;
+					/* ugh */
+				}
+				
+				span.sIFR-alternate {
+					height: 24px;
+					position: static;
+					width: 156px;
+				}
+				
+				/* TODO: haven't we killed of sIFR on this site yet? */
+				
+			}
+			
+		}				
+		
+	/* /$blocks */
+
+	/* particular $pages */
+		/*	OLD SELECTORS: body.page-node-XX ... all reset to .page-node-XX.
+			TODO: Assess which of these pages are deprecated. For ex., page-node-9 prob is. */
+		
+		.page-node-4,
+		.page-node-14,
+		.page-node-47,
+		.page-node-2825 {
+			/* Pages with the three-images-across-the-bottom layout */
+			
+			.field-field-teaserimage {		
+				display: none;
+			}
+		
+		}
+		
+		.page-node-4 {
+			
+			.view-meetjr-page-teaser-list-view {
+				
+				.views-row-even,
+				.views-row-odd {
+					float: left;
+					margin: 0;
+					padding: 0;
+					width: 240px;
+				}
+				
+				.views-field-title,
+				.views-field-field-teaserimage-fid,
+				.views-field-field-teasertext-value {
+					margin-left: 0;
+					margin-right: 29px;
+				}
+				
+				.views-field-title {
+					font-size: 1.375em;
+					
+					field-content a {
+						font-weight: bold;
+					}
+					
+				}
+				
+				.item-list ul {
+					margin-left: 0;
+					margin-right: 0;
+					
+					li {
+						display: none;
+					
+						&.views-row-1,
+						&.views-row-2,
+						&.views-row-3 {
+							display: block;
+						}
+					
+					}
+					
+				}
+		
+			}
+			
+		}
+		
+		.page-node-9 {
+			
+			h2.title {
+				margin-bottom: 0;
+			}
+			
+			.views-field-coordinates {
+				color: $black;
+			}
+			
+		}
+		
+		.page-node-54 {
+			
+			table,
+			tr td {
+				padding-bottom: 10px;
+			}
+			
+			#content-bottom .views-field-field-teaserimage-fid {
+				/* display photo_not_available image on science party and crew page when image is not available, without directly adding an image */
+				background: transparent url('/sites/default/files/photo_not_available.png') no-repeat scroll left top;
+				-moz-background-clip: -moz-initial;
+				-moz-background-origin: -moz-initial;
+				-moz-background-inline-policy: -moz-initial;
+				/* TODO: Add other browser-prefixed properties as necessary. */
+				height: 175px;
+			}
+			
+		}
+		
+		.page-node-9 #content-bottom,
+		.page-node-54 #content-bottom {
+			margin: 1em 0;
+		}
+	
+		.page-node-3002 #content-header {
+			display: none;
+		}
+
+		.page-node-9 #content-bottom .block,
+		.page-node-53 #content .block,
+		.page-node-44 #content-bottom .block,
+		.page-node-15 #content-bottom .block,
+		.page-node-42 #content-bottom .block {
+			/* OLD SELECTORS: body.page-node-XX ... */
+			float:left;
+			margin-left:20px;
+		}
+		
+		.page-node-9 #content-bottom .block {
+			width: 350px;
+		}
+		
+		.page-node-15 #content-bottom .block,
+		.page-node-44 #content-bottom .block,
+		.page-node-53 #content-bottom .block {
+			width: 340px;
+		}
+
+		.page-node-42 #content-bottom .block {
+			/* OLD SELECTOR: body.page-node-42 ... */
+			width: 47%;
+		}
+		
+		.page-node-46 .view-teacher-resource-list-view div.item-list {
+			clear: both;
+			display: block;
+			margin-left: 20px;
+		}
+	
+	/* /$pages */
+
+	/* particular $views */
+
+		.view-ask-scientist-teaser-view h2 {
+			display: none;
+		}
+
+		#block-views-days_at_sea-block_1 {
+			color: $white;
+			display: inline-block;
+			font-size: 13px;
+			margin: 5px 0 5px 20px;
+		
+			label {
+				font-weight: bold;
+			}
+		
+		}
+		
+		.view-expedition-teaser-list-view .views-field-title {
+			color: $yellow;
+			font-weight: bold;
+		}
+
+		.view-game-list-view .views-field-field-teaserimage-fid {
+			float: none; /* was !important */
+		}
+		
+		#block-views-highlighted_content-block_1 {
+			/* OLD SELECTOR: .front #block-views-highlighted_content-block_1 */
+			left: 520px;
+			position: relative;
+			top: -380px;
+		}
+		
+		.view-news-story-teaser-list-view {
+			
+			.views-field-field-teaserimage-fid {
+				float: left;
+				padding: 0 5px 2px 0;
+			}
+
+			.views-field-title {
+				display: block;
+				margin-top: 1em;
+			}
+
+		}
+		
+		.view-recent-posts {
+		
+			.field-field-teaserimage {
+				/* Hide teaser images in recent blog post teasers on home page.
+				TODO: Rebuild view so teaser images aren't loaded in the first place.
+				OLD SELECTOR: body.front #content .field-field-teaserimage */
+				display: none;
+			}
+		
+			> .view-content { 
+				/* OLD SELECTOR: body.front div.view-recent-posts div.view-content */
+				float: left;
+				margin-left: 20px;
+				overflow: hidden;
+				padding-right: 20px;
+				width: 350px;
+			}
+		
+			.view-footer {
+				/* OLD SELECTOR: body.front div.view-recent-posts div.view-footer */
+				float:right;
+				margin: 9px 9px 0 0;
+			}
+		
+			.views-row {
+				/* OLD SELECTOR:	body.front div.view-recent-posts div.views-row-odd, 
+									body.front div.view-recent-posts div.views-row-even */
+				width:350px;
+			}
+			
+			.links.inline {
+				/*	TODO: Dry out. Same styles found in .node .submitted 
+					OLD SELECTOR: div.view-recent-posts ul.links.inline */ 
+				font-size: 11px;
+				clear: left;
+			}
+		
+			.links li {
+				/* OLD SELECTOR: body.front div.view-recent-posts ul.links li */
+				padding-left: 0;
+			}
+		
+			h2 {
+				/* OLD SELECTOR: body.front div.view-recent-posts h2 */
+				font-size: 14px;
+				font-weight: normal;
+			}
+			
+			p {
+				/*	OLD SELECTOR: div.view-recent-posts p */
+				font-size: 12px;
+				line-height: normal; /* TODO: necessary? */
+			}
+		
+			.comment_add {
+				/* OLD SELECTOR: body.front div.vew-recent-posts .comment_add */
+				display: none;
+			}
+		
+		}
+		
+	/* /$views */
+	
+	.blogger {
+		/* OLD SELECTOR: img.blogger */
+		float:left;
+		padding: 0 10px 5px 0;
+	}
+		
+	body.front .panel-col-top .inside .panel-pane .content {
+		/* As far as I can tell, this is just the "Exploring the ocean floor" overlay on the front page. */
+		margin-top: 25px;
+	}
+	
+	ul.links {
+		/* Taxonomy links, node links, comment links */
+		margin: 0;
+		padding: 0;
+		
+		&.inline {
+			/* TODO: dry! */
+			display: inline;
+		}
+		
+		li {
+			display: inline;
+			list-style-type: none;
+			padding: 0 0.5em;
+		}
+	
+	}
+	
+	.views-view-grid {
+		/* OLD SELECTOR: table.views-view-grid */
+		margin-top: 0;
+		
+		tr {
+			/* OLD SELECTOR: .views-view-grid tr */
+			margin-bottom: 10px;
+		}
+		
+		td {
+			/* OLD SELECTOR: table.views-view-grid td */
+			padding-right: 20px;
+		}
+		
+	}
+	
