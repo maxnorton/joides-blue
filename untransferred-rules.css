@@ -155,6 +155,19 @@
 	}
 
 /* Stuff that was already commented out. */
+	 .view-highlighted-content,
+	 .view-view-dea-getinvolved-highlight,
+	 .highlight-block {
+		 /*background-color: #2B6193;*/
+	 }
+ 	.view-kids-blog-posts .views-field-path a {
+		x-background: url("/sites/default/files/image/kidsPage_blogHere.png") no-repeat scroll right center transparent;
+		x-font-size: 18px !important;
+		x-height: 88px;
+		x-line-height: normal;
+		x-text-indent: -9999px;
+		x-width: 116px;
+	}
 	.page-node-3002 h1.title,
 	.page-educators-activities h1.title {
 		/*text-shadow: 2px 1px 4px $white;*/
@@ -623,6 +636,10 @@
 	.sf-menu li.sfHover ul {
 		top: 26px !important;
 	}
+	.page-taxonomy-term-730(and 731) #content-inner .node h2 {
+		margin-bottom: 7px;
+		/* Didn't do anything because it was followed by margin: 0; */
+	}
 	
 /* Relates to the admin section, which is themed with Garland, so why are we theming it here? Check to make sure removal doesn't break admin pages, esp. WRT admin/build/block. */
 /** OpenID **/
@@ -724,3 +741,139 @@
 	padding: 0.1em 0.6em;
 	}
  
+ 
+ /* Classroom Connect page just redirects non-IE browsers to node/2014, so all this markup shouldn't be necessary. Not sure that this section is even active anymore. */
+ 	.page-node-2028  #content-top a:hover, .page-node-2028  #content-bottom  a:hover {
+		text-decoration: underline;
+	}
+
+	
+	.page-node-2028  #content-top {
+		width: 350px;
+		float: right;
+		border: 2px solid #444;
+		padding: 0;
+		margin-bottom: 20px;
+		position: relative;
+		top: 80px;
+	}
+
+	
+	.page-node-2028  #content-top .block-views {
+		margin: 0;
+	}
+
+	
+	.page-node-2028 #content-header, .page-node-2028 #content-area {
+		float: left;
+		width: 55%;
+	}
+
+	
+	.page-node-2028 #content-area  embed, .page-node-2028 #content-area  object, .page-node-2028 #content-bottom  embed, .page-node-2028 #content-bottom  object{
+		display: none;
+	}
+
+	
+	.page-node-2028 .sIFR-alternate {
+		display: none;
+	}
+
+	
+	.page-node-2028 #content-area  .sIFR-alternate, .page-node-2028 #content-bottom  .sIFR-alternate {
+		display: inherit;
+		height: auto;
+		width: auto;
+		position: relative;
+		color: $white;
+		font-weight: bold;
+	}
+
+	
+	.page-node-2028 #content-area h2.title , .page-node-2028 #content-bottom h2.title {
+		background-image: none;
+		padding: 0;
+	}
+
+	
+	.page-node-2028 #content-bottom {
+		clear: both;
+	}
+
+	
+	.page-node-2028 #content-bottom .block-views {
+		border-radius: 10px;
+		border: 2px solid #444;
+		padding: 10px;
+	}
+
+	
+	.page-node-2028 #content-bottom .views-field-title {
+		font-size: 28px;
+		font-weight: bold;
+		margin-bottom: 0.5em;
+	}
+
+	.page-node-2028 #block-views-fa4977ab688738fdd09d5e72cf7538a4 {
+		background-color: rgb(255, 255, 204); 
+		border-color: rgb(102, 102, 102); 
+		border-radius: 5px 5px 5px 5px; 
+		color: rgb(68, 68, 68); 
+		padding: 10px; 
+		text-align: center;
+	}
+
+	
+	.page-node-2028 #block-views-fa4977ab688738fdd09d5e72cf7538a4 a, .page-node-2028 #block-views-fa4977ab688738fdd09d5e72cf7538a4 a:hover {
+		color: #D96D1D;
+	}
+
+	
+	.page-node-2028 #block-views-fa4977ab688738fdd09d5e72cf7538a4  .views-field-title a {
+		color: rgb(217, 109, 29); 
+		font-family: georgia,serif ! important; 
+		font-style: italic; 
+		font-size: 21px;
+	}
+
+	
+	.page-node-2028 .block-views img {
+		margin: 10px;
+	}
+
+	
+	.page-node-2028 .block-views img.alignleft {
+		float: left;
+	}
+
+	
+	.page-node-2028 .block-views img.alignright {
+		float: right;
+	}
+
+	
+	.page-node-2028 .block-views img.wp-post-image {
+		display: none;
+	}
+
+
+/* Deprecated but need to figure out how to remove from dev */
+	.highlighted-teaser {
+		background: url("http://joidesresolution.org/sites/all/themes/joides_blue/images/home-overlay.png") repeat-x scroll 0 0 transparent;
+		height: 231px;
+		left: -520px;
+		padding: 15px;
+		position: absolute;
+		top: 68px;
+		width: 308px;
+	}
+	
+	.highlighted-teaser p {
+		margin-top: 15px;
+	}
+	
+	.highlighted-teaser p a {
+		color: #F7EC41 !important;
+		font-variant: normal !important;
+		font-size: 12px !important;
+	}

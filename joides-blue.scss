@@ -7,9 +7,16 @@ By: Max Norton maxbnorton@gmail.com
 */
 
 /* TODO: 
+	- Remove traces of .highlighted-teaser from table structure and templates
+	- Replace rgb colors with palletted colors
+	- Eliminate use of sIFR throughout site 
 	- Eliminate !important
 	- Eliminate id-based selectors
 	- Replace clear property with better methods 
+	- Remove display: none elements from markup instead, where possible
+	
+	Longer-term:
+	- Replace fixed widths and heights with a grid?
 */
 
 /* Table of Contents
@@ -32,21 +39,28 @@ MISCELLANEOUS
 
 /* FONT AND COLOR PALETTE: 
 ------------------------------ */
+	$newsletter-stack: Verdana, Arial, Helvetica, sans-serif;
 	$sans-stack: Arial,Helvetica,sans-serif;
 	$black: #000;
+	$blue40: #006;
 	$blue-grey: #e4eef2;
 	$blue-bg: #2c6397;
 	$blue-border: #275787;
 	$blue-border-2: #2a5584;
+	$blue-border-3: #2b6193;
 	$dark-blue: #1b3b5e;
 	$dark-yellow: #ded439;
 	$glossary-link: #a3ca2b;
 	$grey20: #333;
+	$grey53: #888;
 	$grey60: #999;
 	$marker: #c00; /* Color for "new" markers */
 	$orange: #ffaa27;
 	$peru: #cd853f;
+	$purple: #800080;
+	$red60: #900;
 	$standard-blue: #00f;
+	$standard-red: #f00;
 	$threedface: #f0f0f0;
 	$unpublished-bg: transparent; /* Drupal core uses a #fff4f4 background */
 	$unpublished-text: #d8d8d8;
@@ -76,6 +90,11 @@ MISCELLANEOUS
 		margin-top: 0px;
 	}
 	
+	.orange,
+	.orange a {
+		color: $orange !important;
+	}
+	
 	td, td div {
 		vertical-align: top
 	}
@@ -90,7 +109,7 @@ MISCELLANEOUS
 	}
 	
 	body {
-		background: url('/sites/all/themes/joides_blue/images/bg-water-faded.jpg') no-repeat center -300px $white;
+		background: url('http://joidesresolution.org/sites/all/themes/joides_blue/images/bg-water-faded.jpg') no-repeat center -300px $white;
 		margin: 10px 0 0;
 		overflow: hidden;
 		padding: 10px 0 0;
@@ -135,7 +154,7 @@ MISCELLANEOUS
 	
 	#content h2.title {
 		/* This rule was original found in the selector block directly above. It was then negated in a separate selector block for #content h1.title, as in the selector block directly below. Doing it this way seems drier. */
-		background: transparent url('/sites/all/themes/joides_blue/img/title-bar-fade.png') scroll no-repeat left top;
+		background: transparent url('http://joidesresolution.org/sites/all/themes/joides_blue/img/title-bar-fade.png') scroll no-repeat left top;
 	} 
 	
 	x-body.node-type-panel #content .panel-col-top h2.title { 
@@ -254,6 +273,27 @@ MISCELLANEOUS
 			}
 			
 		}
+		
+		/* $devel module: .tabs */
+			/* TODO: Answer this question: should this stuff really be styled in a front-end, user-oriented stylesheet? */
+			
+			.tabs .tabs.primary li a {
+				/* OLD SELECTOR: div.tabs ul.tabs.primary li a */
+				color: $white;
+				padding: 5px 15px 0;
+				
+				&.active,
+				&.active:hover {
+					color: $black;
+					text-decoration: none;
+				}
+				
+				&:hover {
+					text-decoration: underline;
+				}
+				
+			}
+				
 		
 		/* $front vs $not-front */
 		
@@ -448,7 +488,7 @@ MISCELLANEOUS
 	/* $nav_bar */
 	
 		#navbar {
-			background: transparent url('/sites/all/themes/joides_blue/img/primary-bg.png') scroll repeat-x left top;
+			background: transparent url('http://joidesresolution.org/sites/all/themes/joides_blue/img/primary-bg.png') scroll repeat-x left top;
 			z-index: 999; /* TODO: apply this to #block-superfish-1 to make it work on educators page. */
 
 			li a {
@@ -465,7 +505,7 @@ MISCELLANEOUS
 			
 			
 			li {
-				background: transparent url('/sites/all/themes/joides_blue/img/pipe.png') scroll no-repeat right top;
+				background: transparent url('http://joidesresolution.org/sites/all/themes/joides_blue/img/pipe.png') scroll no-repeat right top;
 				
 				&.first.sf-depth-1 {
 					margin-left: 0;
@@ -601,7 +641,7 @@ MISCELLANEOUS
 		.views-field-field-teaserimage-fid {
 			/* TODO: Should this be classified as a Drupal element, a theme region, or what? 
 			Note it's defined in page.tpl.php, so it's really part of the theme. */
-			background-image: url('/sites/all/themes/joides_blue/img/picframe-220.png');
+			background-image: url('http://joidesresolution.org/sites/all/themes/joides_blue/img/picframe-220.png');
 			height: 185px;
 			width: 220px;
 			/* Another TODO: eliminate this image overlay nonsense, create rounded corners with CSS instead. */
@@ -627,7 +667,7 @@ MISCELLANEOUS
 		/* #main */
 		
 			#main {
-				background: url('/sites/all/themes/joides_blue/images/bg-repeat-right-matchedblues.gif')
+				background: url('http://joidesresolution.org/sites/all/themes/joides_blue/images/bg-repeat-right-matchedblues.gif')
 					scroll repeat-y center top $blue-grey;
 			}
 			
@@ -636,23 +676,23 @@ MISCELLANEOUS
 			
 				/* TODO: simplify these subselectors if they're staying in at all */
 				body.not-front.sidebar-right & {
-					background: transparent url('/sites/all/themes/joides_blue/images/bg-notfront-matchedblues.gif')
+					background: transparent url('http://joidesresolution.org/sites/all/themes/joides_blue/images/bg-notfront-matchedblues.gif')
 						scroll no-repeat center 28px;
 				}
 				
 				body.front & {
 					/* In old file, this selector referenced div#main-inner. I've gotten rid of the div selector here. If this selectors doesn't apply, try that.*/
-						background: transparent url('/sites/all/themes/joides_blue/images/bg-front5.gif')
+						background: transparent url('http://joidesresolution.org/sites/all/themes/joides_blue/images/bg-front5.gif')
 							no-repeat scroll 19px 28px !important;
 				}
 				
 				body.two-sidebars & {
-					background: transparent url('/sites/all/themes/joides_blue/img/bg-main-two.png')
+					background: transparent url('http://joidesresolution.org/sites/all/themes/joides_blue/img/bg-main-two.png')
 						scroll no-repeat center 28px;
 				}
 				
 				body.no-sidebars & {
-					background: transparent url('/sites/all/themes/joides_blue/img/bg-main-right.png')
+					background: transparent url('http://joidesresolution.org/sites/all/themes/joides_blue/img/bg-main-right.png')
 						scroll no-repeat center 28px;
 				}
 			
@@ -736,7 +776,7 @@ MISCELLANEOUS
 				
 			#main-inner {
 				/* TODO: shouldn't this be getting selected automatically based on the sidebars? */
-				background-image: url('/sites/all/themes/joides_blue/images/bg-largeHeadline-noMap-rightSidebar.gif');
+				background-image: url('http://joidesresolution.org/sites/all/themes/joides_blue/images/bg-largeHeadline-noMap-rightSidebar.gif');
 			}
 			
 			.title {
@@ -1013,6 +1053,25 @@ MISCELLANEOUS
 	
 	/* particular blog $blocks -- OLD SELECTORS were all preceded by #sidebar-right */
 	
+		/* $attachments table */
+			table#attachments {
+				background-color: $white;
+				border: 2px solid $black;
+				color: $black;
+				margin: 0 auto;
+				
+				a {
+					color: $standard-blue;
+					text-decoration: underline;
+				}
+				
+				td, th {
+					border: 1px solid $black;
+					padding: 5px;
+				}
+				
+			}
+		
 		#block-views-blog_new_bloggers-block_1 {
 			border-bottom: 0 none;
 			margin-bottom: 0;
@@ -1198,6 +1257,52 @@ MISCELLANEOUS
 			margin-left: 20px; 
 		}
 		
+		#block-block-44 #askascientist {
+			margin-top: 80px;
+			text-align: center;
+			
+			a {
+				font-size: 16px;
+				font-weight: bold;
+			}
+			
+			img {
+				margin-bottom: 20px;
+			}
+			
+		}
+		
+		#block-clock-clock {
+			display: inline-block;
+			margin: 5px;
+		
+			div {
+				display: inline;
+				/* TODO: shouldn't it just be a span or a section then? */
+			}
+			
+			h2.title {
+				color: $white;
+				display: inline;
+				font-size: 13px;
+				font-weight: bold;
+			}
+			
+			/* TODO: sIFR stuff to eliminate */
+
+				.sIFR-flash {
+					display: none;
+				}
+				
+				.sIFR-alternate {
+					display: inline;
+					height: auto;
+					position: static;
+					width: auto;
+				}
+		
+		}		
+		
 		.block-poll {
 			/* OLD SELECTORS: div.block-poll ... */
 			
@@ -1227,6 +1332,50 @@ MISCELLANEOUS
 			
 		}
 		
+		#block-views-career_list_view-block_2 {
+		
+			.block-inner .views-field-field-teaserimage-fid {
+				float: left;
+			}
+			
+			.content .views-field-title .field-content {
+				font-size: 14px;
+				font-weight: bold;
+			}
+		
+		}
+		
+		#getinvolved-contact {
+			margin-left: 10px;
+			margin-top: 7px;
+		
+			a {
+				color: $white;
+				font-size: 14px;
+				text-transform: uppercase;
+			}
+			
+		}
+		
+		#getinvolved-highlight,
+		.highlight-block {
+			float: left;
+		}
+		
+		#getinvolved-highlight {
+			margin-left: 21px;
+		}
+		
+		.getinvolved-socialicons {
+			float: left;
+			margin-left: 34px;
+		}
+		
+		.highlight-block table,
+		.view-view-dea-getinvolved-highlight-table {
+			min-width: 500px;
+		}
+
 		.social-icons {
 			margin: 0 auto 1em;
 			text-align: center;
@@ -1238,6 +1387,188 @@ MISCELLANEOUS
 			
 		}
 		
+		.view-expedition-current-nowatsea {
+			
+			.views-field-title {
+				left: 10px;
+				position: absolute;
+				z-index: 9;
+			
+				a {
+					color: $orange;
+					filter: glow(color=black,strength=5);
+					font-size: 26px;
+					font-weight: bold;
+					line-height: 32px;
+					padding: 10px 0;
+					text-shadow: 2px 1px 4px $black;
+				}
+			
+			}
+			
+			.now-at-sea-learn-more {
+				text-align: right;
+			}
+			
+			.views-field-field-expedition-start-value,
+			.views-field-field-teasertext-value,
+			.views-field-nothing-1 {
+				font-size: 16px;
+				padding: 10px 25px;
+				position: relative;
+				top: 30px;
+				width: 680px;
+				z-index: 9;
+			}
+			
+			.views-field-nothing {
+				height: 250px;
+				overflow: hidden;
+				position: absolute;
+				top: 6px;
+				width: 100%;
+				z-index: 8;
+			}
+			
+			.views-row {
+				height: 380px;
+				left: -20px;
+				overflow: hidden;
+				position: relative;
+				width: 765px;
+			}
+			
+		}
+		
+		.view-highlighted-content .view-header {
+			background-color: $blue-border-3;
+			color: $grey53;
+			font-size: 16px;
+			font-weight: bold;
+			
+			p {
+				margin-bottom: 0;
+				padding: 0 5px;
+			}
+			
+			#primary & a {
+				color: $yellow;
+				font-size: 16px;
+				font-variant: normal;
+				font-weight: bold;
+			}
+			
+		}
+		
+		/* $social sidebar -- TODO: view-social-sidebar is primary right now, but using v2's standalone page rather than the original's
+		in the context of the breadcrumb trail could be a useful improvement */
+		
+			.view-social-sidebar,
+			.view-social-sidebar-v2 {
+			
+				input {
+					color: $black;
+				
+					&.form-submit {
+						color: $black !important;
+						float: right;
+						margin-right: 14px;
+					}
+				
+				}
+				
+				li {
+					margin-bottom: 6px;
+				}
+				
+				ul {
+					line-height: 14px;
+					list-style: none;
+					margin-top: 0;
+					padding: 0;
+					text-align: center;
+					text-transform: uppercase;
+					
+					a {
+						font-size: 13px;
+					
+						&:hover {
+							color: $white !important;
+							text-decoration: underline;
+						}
+					
+					}
+					
+				}
+			
+			}
+			
+			.page-get-involved {
+				/* OLD SELECTOR: body.page... */
+				/* This is the current get involved page */
+				
+				#content {
+					width: 774px;
+				}
+				
+				#content-area {
+					margin: 0 auto;
+					width: 156px;
+				}
+				
+			}
+			
+			#content .view-social-sidebar-v2 {
+				/* This is the v2 one that looks a little better and maybe should replace v1 in the breadcrumb trail. */
+				
+				ul {
+					list-style-type: circle;
+					margin-left: 50px;
+					text-align: left;
+					text-transform: none;
+				}
+				
+				&.view-display-id-page_1 .getinvolved-socialicons {
+					background-color: rgb(44,98,147);
+					border: 1px solid $threedface;
+					float: right;
+					padding: 10px;
+					position: relative;
+					top: -10px;
+				
+					p {
+						margin-bottom: 0;
+					}
+				
+				}
+				
+				.views-field-nothing,
+				.views-newsletter-signup-webform {
+					float: left;
+				}
+				
+				.views-field-nothing {
+					width: 70%;
+				}
+				
+				.view-newsletter-signup-webform {
+					background-color: $peru;
+					border: 1px solid $threedface;
+					padding: 10px;
+				}
+				
+			}
+		
+		.view-video-viewer-experiment .views-field-nothing {
+			display: inline-block;
+			width: 200px;
+			
+			a {
+				font-weight: bold;
+			}
+			
+		}
+				
 	/* /$blocks */
 
 	/* particular $pages */
@@ -1246,7 +1577,7 @@ MISCELLANEOUS
 		
 		.page-aggregator-sources-7 {
 			/* TODO: This page is empty; is the content aggregated into some other page somewhere? I can't find it. */
-			background: url('/sites/default/files/microbe-banner.jpg') no-repeat scroll center bottom transparent;
+			background: url('http://joidesresolution.org/sites/default/files/microbe-banner.jpg') no-repeat scroll center bottom transparent;
 			height: 170px;
 			
 			.feed-source,
@@ -1355,7 +1686,7 @@ MISCELLANEOUS
 			
 			#content-bottom .views-field-field-teaserimage-fid {
 				/* display photo_not_available image on science party and crew page when image is not available, without directly adding an image */
-				background: transparent url('/sites/default/files/photo_not_available.png') no-repeat scroll left top;
+				background: transparent url('http://joidesresolution.org/sites/default/files/photo_not_available.png') no-repeat scroll left top;
 				-moz-background-clip: -moz-initial;
 				-moz-background-origin: -moz-initial;
 				-moz-background-inline-policy: -moz-initial;
@@ -1375,7 +1706,6 @@ MISCELLANEOUS
 		.page-node-44 #content-bottom .block,
 		.page-node-15 #content-bottom .block,
 		.page-node-42 #content-bottom .block {
-			/* OLD SELECTORS: body.page-node-XX ... */
 			float:left;
 			margin-left:20px;
 		}
@@ -1391,7 +1721,6 @@ MISCELLANEOUS
 		}
 
 		.page-node-42 #content-bottom .block {
-			/* OLD SELECTOR: body.page-node-42 ... */
 			width: 47%;
 		}
 		
@@ -1401,6 +1730,22 @@ MISCELLANEOUS
 			margin-left: 20px;
 		}
 		
+		/* $contest page: node/446 */
+		
+			.page-node-446 {
+				/* OLD SELECTOR: body.pag... */
+				/* TODO: Where there is sIFR there is death. Also, it's not working anyway. */
+				
+				div#content div#content-header h1 embed.sIFR-flash,
+				div#block-block-15 h2 embed.sIFR-flash {
+					display: none;
+				}
+				
+				div#node-446 div#JaRT_title {
+					top: -81px;
+				}
+				
+			}				
 		
 		/* $career-profile-interactive: node/905 */
 		
@@ -1412,8 +1757,163 @@ MISCELLANEOUS
 				
 			}
 		
-		/* $expeditions page: node/2099 */
+		/* $expeditions page and individual expedition pages: node/2099 etc */
 		
+			/* expedition maps */
+			
+				.gmap-popup {
+				
+				
+					.front & {
+						display: none;
+						/* TODO: Why?? Is this a cause of front page map problems? */
+					}
+					
+					.page-map-expeditions &,
+					.page-node-map & {
+						color: $black;
+						height: auto;
+						width: auto;
+					}
+					
+					.page-map-expeditions & {
+						max-width: 500px;
+						min-height: 200px;
+						overflow: auto;
+						position: relative;
+						
+						a:hover {
+							text-decoration: underline;
+						}
+						
+						.views-field-field-teaserimage-fid {
+							float: left;
+						}
+						
+						.views-field-field-teasertext-value {
+							margin-bottom: 35px;
+						}
+						
+						.views-field-title,
+						.views-field-title-1 {
+							
+							a {
+								color: $standard-blue;
+								text-decoration: none;								
+							}
+						
+						}
+						
+						.views-field-title a {
+							font-size: 16px;
+							font-weight: bold;
+						}
+						
+					}
+				
+				}
+				
+				.page-map-expeditions .view-expedition-map-2.view-display-id-block_2 {
+					position: relative;
+					
+					ul {
+						margin-top: 0;
+						padding: 0;
+					}
+					
+				}
+				
+				.page-map-expeditions .gmap-popup,
+				.page-map-expeditions .view-expedition-map-2.view-display-id-block_2 {
+				
+					.views-field-title-1 a {
+						bottom: 15px;
+						position: absolute;
+						right: 15px;	
+					}
+				
+				}
+							
+				.view-expedition-map-2,
+				.view-expedition-map-individual {
+					margin: 0 auto;
+					width: 20px;
+				}
+				
+				.page-map-expeditions,
+				.page-node-map {
+					background-color: $white;
+					
+					.title {
+						margin-bottom: 0 !important;
+						margin-top: 20px !important;
+						text-align: center;
+					}
+					
+					.view-footer p {
+						color: $black;
+						font-size: 16px;
+						margin: 25px;
+				
+						a {
+							color: $standard-blue;
+							text-decoration: underline;
+						}
+				
+					}
+					
+				}
+			
+			/* /expedition maps */
+			
+			.node-type-expedition {
+				/* OLD SELECTOR: body.node... */
+				/* Old descriptor note for this entire section: float expedition page elements around text */
+
+				#content-area {
+					/* OLD SELECTOR: div#cont... */
+					width: 740px;
+					
+					embed,
+					img {
+						float: right;
+						margin-bottom: 15px;
+						margin-left: 15px;
+						
+						&.left {
+							float: left;
+							margin-right: 15px;
+						}
+						
+						&.no-float {
+							float: none;
+						}
+						
+					}
+					
+					.field-field-teaserimage {
+						/* OLD SELECTOR: div.fie... */
+						
+						img,
+						a.imagecache div {
+							float: left;
+							margin-left: 0;
+						}
+						
+					}
+					
+				}
+				
+				.locations-locations-header,
+				.locations-locations-wrapper
+				.messages.status,
+				.meta {
+					/* OLD SELECTOR: div.mes... */
+					display: none;
+				}
+				
+			}
+			
 			.page-node-2099 {
 							
 				.panel-pane fieldset {
@@ -1421,6 +1921,107 @@ MISCELLANEOUS
 				}
 				
 			}
+			
+			/* expedition quick links */
+			
+				#gmap-teaser-image {
+					background: transparent url('http://joidesresolution.org/sites/default/files/nav-blocks/gmap-teaser.png') no-repeat scroll left top;
+					float: left;
+					margin-bottom: 1px;
+					margin-right: 3px;
+					-moz-background-clip: -moz-initial;
+					-moz-background-inline-policy: -moz-initial;
+					-moz-background-origin: -moz-initial;
+				}
+				
+				#iodp {
+					margin: 0 auto;
+				}
+				
+				#iodp-teaser-image {
+					background: transparent url('http://joidesresolution.org/sites/default/files/nav-blocks/iodp-usio.png') no-repeat scroll left top;
+					float: left;
+					margin-bottom: 1px;
+					margin-right: 3px;
+					-moz-background-clip: -moz-initial;
+					-moz-background-inline-policy: -moz-initial;
+					-moz-background-origin: -moz-initial;
+				}
+				
+				#iodp-wrapper {
+					display: none;
+				}
+				
+				.view-expedition-quick-links {
+					
+					.view-content {
+						width: 150px;
+					
+						.view-content {
+							font-size: 15px;
+							font-weight: bold;
+							
+							#sidebar-right & .views-field-title {
+								margin-bottom: 3px;
+								
+								a {
+									font-size: 14px;
+									font-weight: normal;
+									line-height: 15px;
+								}
+								
+							}
+							
+						}
+						
+						#sidebar-right & .views-field-nothing {
+							background-color: $yellow; /* was #fe4; */
+							border: 3px solid $dark-yellow; /* was #dc3; */
+							height: 14px;
+							margin: 15px 0 5px;
+							padding: 5px;
+							text-align: center;
+							width: 134px;
+							
+							a {
+								color: $dark-blue; /* was #236; */
+								font-size: 11px;
+								line-height: 14px;
+								text-transform: uppercase;
+							}
+							
+						}
+					
+					}
+					
+					.views-field-field-expedition-start-value {
+						font-size: 11px;
+						font-weight: normal;
+					}
+										
+				}
+				
+				.view-expedition-sidebar-iodp-only a,
+				.view-expedition-sidebar-links {
+					color: rgb(247, 236, 65);
+					font-size: 14px !important;
+					font-weight: bold;
+				}
+				
+				#sidebar-right #block-views-expedition_quick_links-block_1 {
+					padding-bottom: 35px;
+					padding-top: 0;
+				}
+				
+				.sidebar-teaser {
+					height: 50px;
+					margin-bottom: 20px;
+				}
+
+			/* /expedition quick links */				
+				
+			
+		/* /$expeditions */
 			
 		/* $flyover tour: node/2825 */
 		
@@ -1481,7 +2082,11 @@ MISCELLANEOUS
 				
 			}
 			
-			#node-3002 {
+			#node-3002 {					
+				
+				.getinvolved-socialicons {
+					margin-right: 100px;
+				}
 				
 				.pane-title {
 					color: $yellow;
@@ -1494,20 +2099,32 @@ MISCELLANEOUS
 					margin-left: 10px;
 				}
 				
-				.view-social-sidebar-v2.view-display-id-page_2 {
+				.view-social-sidebar-v2 {
+				
+					#getinvolved-block {
+						width: 900px;
+					}
 					
-					.getinvolved-socialicons p {
+					&.view-display-id-page_2 {
+						
+						.getinvolved-socialicons p {
+							float: left;
+						}
+						
+						.views-field-nothing {
+							margin-left: 10px;
+						}
+						
+						.view-newsletter-signup-webform {
+							background-color: transparent;
+							border: none;
+							margin: 16px 0 0 25px;
+						}
+						
+					}
+					
+					.views-field-nothing #bubba {
 						float: left;
-					}
-					
-					.views-field-nothing {
-						margin-left: 10px;
-					}
-					
-					.view-newsletter-signup-webform {
-						background-color: transparent;
-						border: none;
-						margin: 16px 0 0 25px;
 					}
 										
 				}
@@ -1590,7 +2207,605 @@ MISCELLANEOUS
 				
 			}
 			
+		/* /$educators */
+		
+		/* $kids pages */
+		
+			.page-node-366 {
+				
+				a img {
+				
+					#block-block-10 &,
+					#block-block-11 & {
+						/* OLD SELECTORS: body.page-node-366 div#sidebar-right div#block-block-XX a img */
+						padding-left: 5px;
+					}
+					
+					#block-block-12 & {
+						/* OLD SELECTOR: body.page-node-366 div#sidebar-right div#block-block-12 a img */
+						border: 0;
+						padding: 0 0 40px;
+					}
+					
+				}
+				
+				#content-header {
+					/* OLD SELECTOR: body.page-node-366 div#content-header */
+					display: none;
+				}
+				
+				h2 {
+					font-size: 22px;
+					font-weight: bold;
+					margin-bottom: 0;
+				}
+				
+				.node .submitted {
+					clear: left;
+					font-size: 16px;
+				}
+				
+				.sIFR-flash {
+					display: none !important;
+					visibility: hidden !important;
+				}
+				
+				.view-kids-blog-posts {
+					/* OLD SELECTOR: body.page-node-366 div.view-kids-blog-posts */
+					padding-left: 15px;
+				
+					.views-field-field-teaserimage-fid {
+						/* OLD SELECTOR: body.... div.views-field-fi.... */
+						float: left;
+						margin-right: 10px;
+					}
+					
+					p {
+						font-size: 18px !important;
+						line-height: normal;
+						padding-bottom: 15px;
+					}
+					
+					ul.links {
+						clear: both;
+						font-size: 20px;
+						line-height: 35px;
+						
+						li {
+							padding: 0 25px 0 0;
+						
+							&.comment_add {
+								display: none;
+							}
+						
+						}
+						
+					}
+					
+					.views-field-path a {
+						background: url('sites/default/files/image/kidsPage_blogHere.png') no-repeat transparent;
+						display: block;
+						float: right;
+						height: 88px;
+						position: relative;
+						top: -40px;
+						width: 116px;
+					
+						span {
+							display: none;
+						}
+					
+					}
+					
+					.views-row {
+						height: 240px;
+						padding-bottom: 62px;
+					}
+					
+					.views-row-last {
+						height: 300px;
+					}
+				
+				}
+				
+				#block-views-kids_blog_posts-block_1 {
+					
+					h2.title {
+						background: transparent url('sites/default/files/image/kidsPage_blogTitle.png') no-repeat 10px center;
+						height: 45px;
+						text-indent: -9999px;
+					}
+					
+				}
+				
+			}
 			
+			.page-node-218
+			.page-node-366,
+			.page-node-421,
+			.page-node-422,
+			.page-node-423 {
+				
+				#sidebar-right #block-block-12 {
+					/* TODO: would this work with just block-level targeting? */
+					/* OLD SELECTORS: body.page-node-XX div#sidebar-right div#block-block-12 */
+					padding: 0;
+				}
+				
+			}
+			
+			.page-node-421,
+			.page-node-422 {
+				
+				.field-field-teaserimage {
+					/* OLD SELECTORS: body.page-node-XXX div.field-field-teaserimage */
+					display: none;
+				}
+				
+			}
+			
+			.page-node-423 .view-kids-videos-list-view {
+			
+				.views-field-title,
+				.views-field-field-teasertext-value {
+					font-size: 18px;
+					padding-top: 15px;
+					width: 600px;
+				}
+				
+				.views-field-field-teaserimage-fid {
+					float: left;
+					padding: 10px 10px 20px 0;
+				}
+			
+			}
+			
+		/* /$kids pages */	
+		
+		/* $materials-and-resources: node/300 (a panel pane, really not a standalone page */
+		
+			#node-3000 {
+				
+				#activities-highlight {
+					background-color: $grey53;
+					border: 5px solid $blue-border-3;
+					float: left;
+					height: 136px;
+					overflow: hidden;
+					padding: 5px !important;
+					width: 215px;
+					
+					h2 {
+						margin-top: 0;
+					}
+					
+					p {
+						margin-bottom: 0;
+					}
+					
+				}
+				
+				#jrIllustration {
+					display: none;
+					left: 11px;
+					padding-top: 30px;
+					position: relative;
+					top: -15px;
+				}
+				
+				table {
+					margin-top: 0;
+				}
+				
+			}
+			
+		/* $multimedia pages */
+		
+			#block-views-video_category_picker-block_1 {
+			
+				.view-content,
+				.view-content div,
+				.view-content div div,
+				.view-header,
+				.view-header p {
+					display: inline;
+					font-size: 14px;
+					font-weight: bold;
+				}
+				
+				.page-taxonomy-term-730 &,
+				.page-taxonomy-term-731 & {
+					padding: 242px 0 0 10px;
+				}
+			
+			}
+			
+			.node-type-media {
+				/* OLD SELECTOR: in some cases, body.etc */
+				background-color: $white;
+				color: $black;
+				text-align: center;
+				
+				.field-field-description {
+					margin: 20px auto;
+					text-align: left;
+					width: 300px;
+				}
+								
+				.field-field-teaserimage,
+				.field-label {
+					/* Hide teaser image on video pages */
+					display: none;
+				}
+				
+				.field-type-emvideo {
+					text-align: center;
+				}
+				
+				&.section-node-edit {
+					text-align: left;
+					color: $white;
+				}
+				
+				ul li {
+					text-align: left;
+				}
+				
+				ul.links a {
+					color: $standard-blue;
+				}
+				
+			}
+			
+			.view-video-list-view {
+				height: 708px;
+				position: relative;
+				width: 740px;
+				
+				.item-list {
+					bottom: 0;
+					position: absolute;
+					right: 0;
+				}
+				
+				table.views-view-grid {
+					width: 740px;
+					
+					td {
+						border: 4px solid $dark-blue;
+						padding: 0;
+						width: 180px;
+					}
+				
+				}
+				
+				.view-content {
+					position: absolute;
+					z-index: 0;
+				}
+				
+				.views-field-title {
+					background-color: $blue-border-2;
+					font-size: 12px;
+					font-weight: 400;
+					height: 47px;
+					margin-bottom: 7px;
+					padding: 5px 15px;
+					width: 150px;
+				}
+				
+				.views-field-field-description-value {
+					padding: 0 20px 10px;
+					width: 125px;
+				}
+				
+				.views-field-field-teaserimage-fid {
+					padding: 0 20px;
+				}
+				
+				.view-footer {
+				
+					.mask {
+						position: absolute;
+						z-index: 999;
+					}
+					
+					.mask-bottom {
+						bottom: 30px;
+					}
+					
+					.mask-left {
+						left: 0;
+					}
+					
+					.mask-right {
+						right: 0;
+					}
+					
+					.mask-top {
+						top: 0;
+					}
+				
+				}
+				
+			}
+			
+			/* TODO: Merge all these selectors in a more logical manner. Also see #node-3002 */
+				.highlight-block td,
+				.view-highlighted-content td,
+				.view-video-viewer-experiment td,
+				.view-view-dea-getinvolved-highlight td {
+					background-color: $grey53;
+					border: 5px solid $blue-border-3;
+					display: -moz-inline-stack;
+					display: inline-block;
+					*display: inline;
+					float: left;
+					height: 80px;
+					padding: 5px !important;
+					width: 335px;
+					zoom: 1;
+				}
+				
+				.highlight-block td,
+				.view-highlighted-content td,
+				.view-view-dea-getinvolved-highlight td {
+					height: 58px;
+					width: 195px;
+					/* TODO: wouldn't it make more sense to use these in the preceding selector, 
+					and only target .view-video-viewer-experiment td with the alternative height/width properties?
+					Does .view-video-viewer-experiment even exist?
+					EDIT: Yes, it is in use at node/2110, so give it a better name. */
+				}
+				
+				.highlight-block,
+				.view-highlighted-content,
+				.view-view-dea-getinvolved-highlight {
+					width: 430px;
+					
+					a {
+						margin: 0 !important;
+					}
+					
+					.views-field-field-featured-content-label-value {
+						display: inline-block;
+						width: 95px;
+						
+						.field-content {
+							color: $white;
+							text-transform: uppercase;
+							vertical-align: middle;
+							
+							a {
+								font-size: 12px !important;
+								line-height: 12px !important;
+							}
+							
+						}
+						
+					}
+
+					.views-field-field-teaserimage-fid {
+						width: 90px !important;
+					}
+										
+				}
+				
+				.view-video-viewer-experiment,
+				.view-highlighted-content,
+				#getinvolved-block .view-view-dea-getinvolved-highlight,
+				#node-3000 .highlight-block {
+					
+					.views-field-field-teaserimage-fid {
+						background-image: none;
+						display: -moz-inline-stack;
+						display: inline-block;
+						*display: inline;
+						float: left;
+						height: 80px;
+						padding: 0 5px 0 0;
+						width: 125px;
+						zoom: 1;
+					}
+					
+				}
+				
+				.view-highlighted-content,
+				.view-view-dea-getinvolved-highlight {
+					
+					.views-admin-links {
+						
+						a {
+							font-size: 12px !important;
+							font-variant: normal !important;
+							position: relative;
+							top: -10px;
+						}
+						
+						li {
+							background: none !important;
+						}
+						
+					}
+					
+				}
+			
+			.page-taxonomy-term-730 #content-inner,
+			.page-taxonomy-term-731 #content-inner {
+				margin: 0 0 15px 0;
+				width: 761px !important;
+				
+				.node {
+					border: 4px solid $dark-blue;
+					border-left: none !important;
+					display:inline-block;
+					display: -moz-inline-stack;
+					*display: inline;
+					float: left;
+					height: 222px;
+					padding: 0;
+					width: 180px;
+					zoom: 1;
+					
+					h2 {
+						background-color: $blue-border-2;
+						font-size: 12px;
+						font-weight: 400;
+						height: 47px;
+						margin-bottom: 7px;
+						margin: 0;
+						padding: 5px 15px;
+						width: 150px;
+					}
+					
+					.feed-icons,
+					.field-field-description .field-label,
+					.field-field-media,
+					ul.links {
+						display: none;
+					}
+					
+					.field-field-description {
+						padding: 0 20px 10px;
+						width: 125px;
+					}
+					
+					.field-field-teaserimage {
+						padding: 0 20px;
+						
+						a img {
+							height: 80px;
+							width: 125px;
+						}
+						
+					}
+					
+					&#node-931,
+					&#node-1169 {
+						/* OLD SELECTORS: .page-taxonomy-term-731 #content-inner #node-931.node, 
+											.page-taxonomy-term-730 #content-inner #node-1169.node */
+						border-left: 4px solid $dark-blue !important;
+					}
+					
+					&#node-1128 {
+						/* OLD SELECTOR: referred only to term 730 */
+						display: none;
+					}
+					
+				}
+				
+			}
+					
+		/* /$multimedia */		
+		
+		/* $newsletters */
+		
+			.newsletter {
+				/* OLD SELECTOR: div.newsletter */
+				
+				a {
+					color: $standard-blue;
+					
+					&:hover {
+						color: $standard-red;
+					}
+					
+					&:visited {
+						color: $purple;
+					}
+				}
+				
+				.style1,
+				.style3,
+				.style6,
+				.style7,
+				.style8,
+				.style11,
+				.style12,
+				.style13,
+				.style14,
+				.style15,
+				.style21,
+				.style25 {
+					font-family: $newsletter-stack;
+				}
+				
+				.style1,
+				.style9,
+				.style21 {
+					color: $grey60;
+					font-size: 9px;
+				}
+				
+				.style3,
+				.style6,
+				.style11,
+				.style12,
+				.style13,
+				.style14,
+				.style24 {
+					font-size: 11px;
+				}
+				
+				.style3,
+				.style15 {
+					color: $red60;
+				}
+				
+				.style6,
+				.style7,
+				.style8,
+				.style12,
+				.style14 {
+					color: $grey20;
+				}
+				
+				.style7,
+				.style8,
+				.style15 {
+					font-size: 10px;
+				}
+				
+				.style8,
+				.style14,
+				.style15,
+				.style21 {
+					font-weight: bold;
+				}
+				
+				.style12,
+				.style13 {
+					font-style: italic;
+				}
+				
+				.style13,
+				.style23,
+				.style23 a,
+				.style23 a:hover {
+					color: $black;
+				}
+				
+				.style22 {
+					font-size: 12px;
+				}
+				
+				.style23 a {
+					text-decoration: none;
+					
+					&:hover {
+						text-decoration: underline;
+					}
+					
+				}
+				
+				.style25 {
+					color: $blue40;
+				}
+				
+			}
+				
+		
+		/* /$newsletters */
 
 	
 	/* /$pages */
@@ -1791,3 +3006,40 @@ MISCELLANEOUS
 		}
 		
 	}
+	
+	.view-expedition-full-list .view-header {
+		font-size: 24px;
+		font-weight: bold;
+	}
+
+	/* $sIFR replacement */
+	
+		.not-front #content-inner {
+			
+			.title.sIFR-replaced {
+				
+				embed,
+				object {
+					
+					&.sIFR-flash {
+						display: none;
+					}
+				
+				}					
+				
+			}
+			
+			.title,
+			.title.sIFR-replaced span.sIFR-alternate {
+				height: 33px;
+				position: relative;
+				width: auto;
+			}
+			
+			h2.title,
+			h2.title.sIFR-replaced span.sIFR-alternate {
+				font-size: 24px;
+				padding-top: 3px;
+			}
+			
+		}
