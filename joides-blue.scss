@@ -7,6 +7,7 @@ By: Max Norton maxbnorton@gmail.com
 */
 
 /* TODO: 
+	X Update TOC
 	- Remove traces of .highlighted-teaser from table structure and templates
 	- Replace rgb colors with palletted colors
 	- Eliminate use of sIFR throughout site 
@@ -20,21 +21,115 @@ By: Max Norton maxbnorton@gmail.com
 */
 
 /* Table of Contents
-COLOR PALETTE
+FONT AND COLOR PALETTE
 RESETS AND OVERRIDES
 LINKS AND TYPE
 DRUPAL ELEMENTS
+$block admin page
+$content (.content)
+$devel module (.tabs)
+$front vs $not-front (just .front right now)
+$node
+	.node
+	.node-inner
+	.node-unpublished
+	.unpublished
+	.node.node-unpublished, .comment.comment-unpublished
+$block (.block)
+.more-link
+#user-login-form
+tr.even, tr.odd
 THEME REGIONS
-$logo
-$top-nav
-$nav-bar
-$etc
+$top_bar
+$header
+$nav_bar
+$left_aside (empty)
+$right_aside
+$content_top
+$content_bottom (empty)
+$footer
+$closure_region (empty)
 SECONDARY LAYOUT
-$etc
-PARTICULAR NODE TYPES
+#content-area
+generic/arbitrary page elements
+	#main
+	#content
+PARTICULAR NODE TYPES (just $activity-revised right now)
 BLOG
+.node-type-blog
+.page-blog
+.node-type-blog, .page-blog
+particular blog $blocks
+blog $contributors page
 FORM ELEMENTS
 MISCELLANEOUS
+$comments
+.ctools-modal-content
+$glossary
+particular $blocks
+	#block-block-40
+	#block-block-41
+	#block-block-43, #block-views--exp-activity_search-default
+	#block-block-44 #askascientist
+	#block-clock-clock
+	.block-poll
+	#block-views-career_list_view-block_2
+	#getinvolved-contact
+	#getinvolved-highlight, .highlight-block
+	#getinvolved-highlight
+	.getinvolved-socialicons
+	.highlight-block table, .view-view-dea-getinvolved-highlight-table
+	.social-icons
+	.view-expedition-current-nowatsea
+	.view-highlighted-content .view-header
+	$social sidebar
+		.view-social-sidebar, .view-social-sidebar-v2
+		.page-get-involved
+		#content .view-social-sidebar-v2
+	.view-video-viewer-experiment .views-field-nothing
+particular $pages
+	.page-aggregator-sources-7
+	.page-node-4, 14, 47, 2825
+	.page-node-4
+	.page-node-9
+	.page-node-54
+	.page-node-9 #content-bottom, .page-node-54 #content-bottom
+	.page-node-9 #content-bottom .block, 53, 44, 15, 42
+	.page-node-9 #content-bottom .block
+	.page-node-15 #content-bottom .block, 44, 53
+	.page-node-42 #content-bottom .block
+	.page-node-46 .view-teacher-resource-list-view div.item-list
+	$content page (.page-node-446)
+	$career-profile-interactive (.page-node-905)
+	$expeditions page and indivudal expedition pages
+		expedition maps
+		.node-type-expedition
+		.page-node-2099
+		expedition quick links
+	$flyover tour (.page-node-2825)
+	$educators page
+	$kids pages
+	$materials-and-resources (#node-3000, really a panel pane, not a standalone page)
+	$multimedia pages
+	$newsletters
+particular $views
+	.view-ask-scientist-teaser-view h2
+	#block-views-days_at_sea-block_1
+	.view-expedition-teaser-list-view .views-field-title
+	.view-game-list-view .views-field-field-teaserimage-fid
+	#block-views-highlighted_content-block_1
+	.views-news-story-teaser-list-view
+	.view-recent-posts
+.blogger
+body.front .panel-col-top .inside .panel-pane .content ("exploring hte ocean floor" overlay on front page?)
+#cboxWrapper
+.globe
+ul.links
+#logo-inner
+.views-view-grid
+.view-activity-search, .view-expedition-full-list
+.view-expedition-full-list .view-header
+$sIFR replacement (just subselectors of .not-front #content-inner right now)
 */
 
 /* FONT AND COLOR PALETTE: 
@@ -71,8 +166,8 @@ MISCELLANEOUS
 /* RESETS AND OVERRIDES
 ------------------------------ */
 
-/* For now, rely on html-elements.css, called in joides_blue.info.
-	TODO: Update to current Zen theme reset file (html-elements is deprecated and has been replaced by html-reset.css). */
+	/* For now, rely on html-elements.css, called in joides_blue.info.
+		TODO: Update to current Zen theme reset file (html-elements is deprecated and has been replaced by html-reset.css). */
 
 /* LINKS AND TYPE
 ------------------------------ */
@@ -252,15 +347,15 @@ MISCELLANEOUS
 /* DRUPAL ELEMENTS
 ------------------------------ */
 
-		/* $block admin page */
-		
+	/* $block admin page */
+	
 		.block-region {
 			/* Disable yellow region backgrounds on block building page. */
 			background-color: transparent;
 		}
-		
-		/* $content */
-		
+	
+	/* $content */
+	
 		.content {
 			
 			.field-field-crosslinks {
@@ -273,30 +368,30 @@ MISCELLANEOUS
 			}
 			
 		}
+	
+	/* $devel module: .tabs */
+		/* TODO: Answer this question: should this stuff really be styled in a front-end, user-oriented stylesheet? */
 		
-		/* $devel module: .tabs */
-			/* TODO: Answer this question: should this stuff really be styled in a front-end, user-oriented stylesheet? */
+		.tabs .tabs.primary li a {
+			/* OLD SELECTOR: div.tabs ul.tabs.primary li a */
+			color: $white;
+			padding: 5px 15px 0;
 			
-			.tabs .tabs.primary li a {
-				/* OLD SELECTOR: div.tabs ul.tabs.primary li a */
-				color: $white;
-				padding: 5px 15px 0;
-				
-				&.active,
-				&.active:hover {
-					color: $black;
-					text-decoration: none;
-				}
-				
-				&:hover {
-					text-decoration: underline;
-				}
-				
+			&.active,
+			&.active:hover {
+				color: $black;
+				text-decoration: none;
 			}
-				
-		
-		/* $front vs $not-front */
-		
+			
+			&:hover {
+				text-decoration: underline;
+			}
+			
+		}
+			
+	
+	/* $front vs $not-front */
+	
 		.front {
 			
 			#content,
@@ -315,60 +410,60 @@ MISCELLANEOUS
 			}
 			
 		}
-		
-		/* $node */
-		
-			.node {
-				
-				.links {
-					/*	OLD SELECTOR: .node div.links */
-					margin: 1em 0;
-				}
-				
-				.submitted {
-					/* TODO: Dry out. Same styles found in .view-recent-posts ul.links.inline */
-					font-size: 11px;
-					clear: left;
-				}
-			
-			}
-			
-			.node-inner {
-				
-				.content,
-				.meta,
-				.links {
-					/* OLD SELECTOR: .node-inner ul.links */
-					margin-left: 10px;
-				}
-				
-			}
-			
-			.node-unpublished {
-				background-color: $unpublished-bg; 
-			}
 	
-			.unpublished { 
-				/* TODO:	I question the utility of this entire set of styles, and the one that follows. 
-							An old comment in the old css suggests this is a div that displays the word 
-							"Unpublished" beneath the unpublished content.*/
-				/* OLD SELECTORS:	.node-unpublished div.unpublished,
-									.comment-unpublished div.unpublished */
-				color: $unpublished-text;
-				height: 0;
-				font-size: 75px;
-				font-weight: bold;
-				line-height: 1; /* TODO: one what? */
-				overflow: visible;
-				text-align: center;
-				text-transform: uppercase;
-				word-wrap: break-word;
+	/* $node */
+	
+		.node {
+			
+			.links {
+				/*	OLD SELECTOR: .node div.links */
+				margin: 1em 0;
 			}
 			
-			.node.node-unpublished .picture,
-			.comment.comment-unpublished .picture {
-				position: relative; /* Otherwise floated pictures will appear below the "Unpublished" text. */
+			.submitted {
+				/* TODO: Dry out. Same styles found in .view-recent-posts ul.links.inline */
+				font-size: 11px;
+				clear: left;
 			}
+		
+		}
+		
+		.node-inner {
+			
+			.content,
+			.meta,
+			.links {
+				/* OLD SELECTOR: .node-inner ul.links */
+				margin-left: 10px;
+			}
+			
+		}
+		
+		.node-unpublished {
+			background-color: $unpublished-bg; 
+		}
+
+		.unpublished { 
+			/* TODO:	I question the utility of this entire set of styles, and the one that follows. 
+						An old comment in the old css suggests this is a div that displays the word 
+						"Unpublished" beneath the unpublished content.*/
+			/* OLD SELECTORS:	.node-unpublished div.unpublished,
+								.comment-unpublished div.unpublished */
+			color: $unpublished-text;
+			height: 0;
+			font-size: 75px;
+			font-weight: bold;
+			line-height: 1; /* TODO: one what? */
+			overflow: visible;
+			text-align: center;
+			text-transform: uppercase;
+			word-wrap: break-word;
+		}
+		
+		.node.node-unpublished .picture,
+		.comment.comment-unpublished .picture {
+			position: relative; /* Otherwise floated pictures will appear below the "Unpublished" text. */
+		}
 
 	/* $block */
 	
@@ -2362,7 +2457,7 @@ MISCELLANEOUS
 			
 		/* /$kids pages */	
 		
-		/* $materials-and-resources: node/300 (a panel pane, really not a standalone page */
+		/* $materials-and-resources: node/3000 (a panel pane, really not a standalone page */
 		
 			#node-3000 {
 				
