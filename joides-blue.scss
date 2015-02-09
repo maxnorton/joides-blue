@@ -88,6 +88,7 @@ particular $blocks
 		#content .view-social-sidebar-v2
 	.view-video-viewer-experiment .views-field-nothing
 particular $pages
+	test-front
 	.page-aggregator-sources-7
 	.page-node-4, 14, 47, 2825
 	.page-node-4
@@ -140,6 +141,7 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 	$blue40: #006;
 	$blue-grey: #e4eef2;
 	$blue-bg: #2c6397;
+	$blue-bg-kids-sidebar: #2c5f91;
 	$blue-border: #275787;
 	$blue-border-2: #2a5584;
 	$blue-border-3: #2b6193;
@@ -204,7 +206,8 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 	}
 	
 	body {
-		background: url('http://joidesresolution.org/sites/all/themes/joides_blue/images/bg-water-faded.jpg') no-repeat center -300px $white;
+		background: url('http://joidesresolution.org/sites/all/themes/joides_blue/images/bg-water-faded.jpg') no-repeat center -300px $black;
+		color: $white;
 		margin: 10px 0 0;
 		overflow: hidden;
 		padding: 10px 0 0;
@@ -565,9 +568,9 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 		h1#site-name,
 		div#site-name {
 			/* The name of the website 
-			TODO: consider removing div#site-name
+			TODO: use a more modern method, or consider removing div#site-name
 				(or DRY out text-indent into a separate class) */
-			text-indent: 100%;
+			text-indent: -999em;
 		}
 		
 		#site-slogan {
@@ -583,7 +586,7 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 	/* $nav_bar */
 	
 		#navbar {
-			background: transparent url('http://joidesresolution.org/sites/all/themes/joides_blue/img/primary-bg.png') scroll repeat-x left top;
+			background: transparent url('/sites/all/themes/joides_blue/img/primary-bg.png') scroll repeat-x left top;
 			z-index: 999; /* TODO: apply this to #block-superfish-1 to make it work on educators page. */
 
 			li a {
@@ -596,11 +599,29 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 			/* Primary links */
 			height: 28px;
 			margin-left: 0;
-			
-			
+			position: relative;
+			z-index: 9;
 			
 			li {
-				background: transparent url('http://joidesresolution.org/sites/all/themes/joides_blue/img/pipe.png') scroll no-repeat right top;
+				background: transparent url('/sites/all/themes/joides_blue/images/pipe.png') scroll no-repeat right top;
+				
+				&.sf-depth-1 {
+					display: inline-block;
+					height: 26px;
+					margin-top: 2px;
+					overflow: visible;
+					padding-top: 0;
+					width: 155px;
+				
+					ul {
+						display: none;
+					}
+					
+					&:hover ul {
+						display: block;
+					}
+				
+				}				
 				
 				&.first.sf-depth-1 {
 					margin-left: 0;
@@ -610,6 +631,28 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 					background: none;
 				}
 				
+				&.sf-depth-2 {
+					float: none;
+					list-style-type: none;
+					padding: 10px;
+					position: relative;
+					width: 350px;
+					z-index: 99;
+					
+					&:hover li.sf-depth-3 {
+						border: 0;
+						display: block;
+						float: none;
+						padding: 5px;
+						text-indent: 25px;
+					}
+					
+				}
+				
+				&.sf-depth-3 {
+					display: none;
+				}
+								
 				li {
 					background: $blue-bg;
 					border: 2px solid $blue-border;
@@ -625,6 +668,11 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 				
 			}
 			
+		}
+		
+		.sf-menu li:hover ul,
+		.sf-menu li.sfHover ul {
+			top: 26px !important;
 		}
 		
 		.block-superfish {
@@ -703,26 +751,66 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 	
 	/* $footer */
 	
+		.iodp,
+		.contact,
+		.faq,
+		.glossary,
+		#footer-inner,
+		#footer .block {
+			background: url('/sites/all/themes/joides_blue/images/sprites.png') no-repeat transparent;
+		}
+
 		#footer {
-			background: url ('sites/all/themes/joides_blue/images/bg-footerCentralColumn.png') scroll repeat-y center top transparent;
-			height: 274px;
+			background: url('http://joidesresolution.org/sites/all/themes/joides_blue/images/bg-footerCentralColumn.png') scroll repeat-y center top transparent;
+			height: 193px;
 			position: relative;
 			
 			.block {
+				background-position: 767px -734px;
 				font-size: 12px;
-				height: 18px;
 				margin: 0 auto;
-				padding-top: 202px;
+				padding-top: 121px;
 				width: 940px;
 			}
 			
 		}
 		
 		#footer-inner {
-			background: url('sites/all/themes/joides_blue/images/bg-footer.png') scroll no-repeat center bottom transparent;
+			background-position: 0 -383px;
 			height: 100%;
 			margin: 0;
 			padding: 0;
+		}
+		
+		.iodp,
+		.contact,
+		.faq,
+		.glossary {
+			display: inline-block;
+		}
+		
+		.contact{
+			background-position: -154px -107px ;
+			width: 100px;
+			height: 76px;
+		}
+		
+		.faq {
+			background-position: -89px -107px ;
+			width: 62px;
+			height: 76px;
+		}
+		
+		.glossary {
+			background-position: 0 -107px ;
+			width: 87px;
+			height: 76px;
+		}
+		
+		.iodp {
+			background-position: 0 -35px ;
+			width: 180px;
+			height: 71px;
 		}
 	
 	/* $closure_region */
@@ -862,19 +950,22 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 
 	/* $activity-revised: .node-type-activity-revised */
 		
-		.node-type-activity-revised {
-			/* OLD SELECTORS: body.not-front.sidebar-right.node-type-activity-revised ... */
+		body.not-front.sidebar-right.node-type-activity-revised {
+			/* OLD SELECTORS: body.not-front.sidebar-right.node-type-activity-revised ...
+			[2-8-15: Had to restore old selector to trump standard sidebar-rt bg in selector specificity.]*/
 			
 			.content {
 				position: relative;	
 			}
 				
 			#main-inner {
-				/* TODO: shouldn't this be getting selected automatically based on the sidebars? */
+				/* TODO: shouldn't this be getting selected automatically based on the sidebars?
+				[2-8-15: No, because it's different than all the other rt-sidebar pages.
+				There still might be a cleaner method, though.]*/
 				background-image: url('http://joidesresolution.org/sites/all/themes/joides_blue/images/bg-largeHeadline-noMap-rightSidebar.gif');
 			}
 			
-			.title {
+			#content-inner .title {
 				color: $orange;
 				font-weight: bold;
 				height: 80px;
@@ -1133,6 +1224,10 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 				color: $white;
 			}
 			
+			.view-social-sidebar li a {
+				color: $yellow;
+			}
+			
 			ol li {
 				list-style: decimal outside none;
 			}
@@ -1339,6 +1434,7 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 		
 		#block-block-40 {
 			position: relative;
+			z-index: -9;
 		}
 		
 		#block-block-41 { 
@@ -1478,6 +1574,34 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 			
 			&:first-of-type {
 				padding-top: 10px;
+			}
+			
+			a {
+				background: url('/sites/all/themes/joides_blue/images/sprites.png') no-repeat;
+				display: inline-block;
+				height: 32px;
+				margin: 2px;
+				width: 32px;
+			
+				&.facebook {
+					background-position: 0 -1px;
+				}
+				
+				&.instagram {
+					background-position: -34px -1px;
+				}
+				
+				&.rss {
+					background-position: -69px 0;
+				}
+				
+				&.twitter {
+					background-position: -104px -1px;
+				}
+				
+				&.youtube {
+					background-position: -139px -1px;
+				}
 			}
 			
 		}
@@ -1670,6 +1794,18 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 		/*	OLD SELECTORS: body.page-node-XX ... all reset to .page-node-XX.
 			TODO: Assess which of these pages are deprecated. For ex., page-node-9 prob is. */
 		
+		/* 'test-front' page is really a panel pane
+			TODO: Give it a more semantic name. */
+			#node-2568 {
+				background: url("http://joidesresolution.org/sites/all/themes/joides_blue/images/home-overlay.png") repeat-x scroll 0 0 transparent;
+				height: 231px;
+				left: -19px;
+				padding: 15px;
+				position: absolute;
+				top: -301px;
+				width: 308px;
+			} 
+		
 		.page-aggregator-sources-7 {
 			/* TODO: This page is empty; is the content aggregated into some other page somewhere? I can't find it. */
 			background: url('http://joidesresolution.org/sites/default/files/microbe-banner.jpg') no-repeat scroll center bottom transparent;
@@ -1787,6 +1923,7 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 				-moz-background-inline-policy: -moz-initial;
 				/* TODO: Add other browser-prefixed properties as necessary. */
 				height: 175px;
+				width: 154px;
 			}
 			
 		}
@@ -1932,7 +2069,7 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 				.view-expedition-map-2,
 				.view-expedition-map-individual {
 					margin: 0 auto;
-					width: 20px;
+					width: 720px;
 				}
 				
 				.page-map-expeditions,
@@ -2099,8 +2236,13 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 				.view-expedition-sidebar-iodp-only a,
 				.view-expedition-sidebar-links {
 					color: rgb(247, 236, 65);
-					font-size: 14px !important;
 					font-weight: bold;
+					x-font-size: 14px !important;
+					
+					p {
+						color: $white;
+					}
+					
 				}
 				
 				#sidebar-right #block-views-expedition_quick_links-block_1 {
@@ -2128,7 +2270,7 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 		/* $educators page: node/3002 */
 		
 			#educators-splash-overlay {
-				background: url('sites/all/themes/joides_blue/images/home-overlay.png') repeat-x scroll 0 0 transparent;
+				background: url('http://joidesresolution.org/sites/all/themes/joides_blue/images/home-overlay.png') repeat-x scroll 0 0 transparent;
 				bottom: 4px;
 				height: 65px;
 				left: 0;
@@ -2138,7 +2280,7 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 			}
 			
 			.page-node-3002,
-			.page-educators-activites {
+			.page-educators-activities {
 				
 				#breadcrumb {
 					margin: 10px 0;
@@ -2213,6 +2355,7 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 						.view-newsletter-signup-webform {
 							background-color: transparent;
 							border: none;
+							float: left;
 							margin: 16px 0 0 25px;
 						}
 						
@@ -2378,7 +2521,7 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 					}
 					
 					.views-field-path a {
-						background: url('sites/default/files/image/kidsPage_blogHere.png') no-repeat transparent;
+						background: url('http://joidesresolution.org/sites/default/files/image/kidsPage_blogHere.png') no-repeat transparent;
 						display: block;
 						float: right;
 						height: 88px;
@@ -2406,7 +2549,7 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 				#block-views-kids_blog_posts-block_1 {
 					
 					h2.title {
-						background: transparent url('sites/default/files/image/kidsPage_blogTitle.png') no-repeat 10px center;
+						background: transparent url('http://joidesresolution.org/sites/default/files/image/kidsPage_blogTitle.png') no-repeat 10px center;
 						height: 45px;
 						text-indent: -9999px;
 					}
@@ -2415,7 +2558,7 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 				
 			}
 			
-			.page-node-218
+			.page-node-218,
 			.page-node-366,
 			.page-node-421,
 			.page-node-422,
@@ -2424,6 +2567,7 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 				#sidebar-right #block-block-12 {
 					/* TODO: would this work with just block-level targeting? */
 					/* OLD SELECTORS: body.page-node-XX div#sidebar-right div#block-block-12 */
+					background-color: $blue-bg-kids-sidebar;
 					padding: 0;
 				}
 				
@@ -3056,8 +3200,27 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 	
 	}
 	
+	#logo-inner, .title-slogan {
+		background: transparent url('/sites/all/themes/joides_blue/images/sprites.png') no-repeat;
+	}
+	
 	#logo-inner {
+		background-position: 0 -186px;
+		height: 174px;
+		left: -14px;
 		position: relative;
+		top: -71px;
+		width: 988px;
+	}
+	
+	.title-slogan {
+		background-position: -225px -6px;
+		display: inline-block;
+		height: 81px;
+		left: 15px;
+		position: relative;
+		top: 70px;
+		width: 643px;
 	}
 	
 	.views-view-grid {

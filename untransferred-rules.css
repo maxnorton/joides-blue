@@ -114,8 +114,10 @@
 		padding: 0 25px;
 		width: 725px;
 	}
+	
+	/* DON'T REMOVE TEST-FRONT! Will break home page */
 	#node-2568 {
-		/* 'test front' page */
+		/* 'test front' page used in home page panels */
 		background: url("http://joidesresolution.org/sites/all/themes/joides_blue/images/home-overlay.png") repeat-x scroll 0 0 transparent;
 		height: 231px;
 		left: -19px;
