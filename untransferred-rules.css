@@ -857,25 +857,3 @@
 	.page-node-2028 .block-views img.wp-post-image {
 		display: none;
 	}
-
-
-/* Deprecated but need to figure out how to remove from dev */
-	.highlighted-teaser {
-		background: url("http://joidesresolution.org/sites/all/themes/joides_blue/images/home-overlay.png") repeat-x scroll 0 0 transparent;
-		height: 231px;
-		left: -520px;
-		padding: 15px;
-		position: absolute;
-		top: 68px;
-		width: 308px;
-	}
-	
-	.highlighted-teaser p {
-		margin-top: 15px;
-	}
-	
-	.highlighted-teaser p a {
-		color: #F7EC41 !important;
-		font-variant: normal !important;
-		font-size: 12px !important;
-	}

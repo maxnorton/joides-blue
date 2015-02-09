@@ -604,6 +604,8 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 			
 			li {
 				background: transparent url('/sites/all/themes/joides_blue/images/pipe.png') scroll no-repeat right top;
+				position: relative;
+				z-index: 99;
 				
 				&.sf-depth-1 {
 					display: inline-block;
@@ -1796,14 +1798,21 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 		
 		/* 'test-front' page is really a panel pane
 			TODO: Give it a more semantic name. */
-			#node-2568 {
+			#block-block-51 {
 				background: url("http://joidesresolution.org/sites/all/themes/joides_blue/images/home-overlay.png") repeat-x scroll 0 0 transparent;
 				height: 231px;
-				left: -19px;
 				padding: 15px;
 				position: absolute;
-				top: -301px;
+				top: 160px;
 				width: 308px;
+				z-index: 9;
+				
+				a {
+					color: $yellow;
+					font-size: 12px;
+					font-variant: normal;
+					margin-left: 0;
+				}
 			} 
 		
 		.page-aggregator-sources-7 {
@@ -2526,7 +2535,7 @@ $sIFR replacement (just subselectors of .not-front #content-inner right now)
 						float: right;
 						height: 88px;
 						position: relative;
-						top: -40px;
+						top: 40px;
 						width: 116px;
 					
 						span {
